@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type ProductProperties {
+  name  String
+  value String
+}
+
+model brand {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  description String
+  name        String
+}
+
+model category {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  description String
+  mainProps   String[]
+  name        String
+  /// Could not determine type: the field only had null or empty values in the sample set.
+  parentID    Json?
+}
+
+model invoice {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt String
+  status    String
+  userInfo  String
+}
+
+model product {
+  id          String              @id @default(auto()) @map("_id") @db.ObjectId
+  category    String              @db.ObjectId
+  description String
+  image       String
+  name        String
+  price       Int
+  properties  ProductProperties[]
+}
