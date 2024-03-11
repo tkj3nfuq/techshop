@@ -28,6 +28,8 @@ export default function ProductsTable() {
       .then((data) => setCategories(data))
       .catch((error) => console.error("Error fetching categories", error))
   }, [])
+
+  console.log(categories)
   
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCategoryValue = event.target.value;
