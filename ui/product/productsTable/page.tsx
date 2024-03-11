@@ -4,8 +4,11 @@ import React from 'react'
 import ProductCard from './productCard/page'
 import { product, category } from '@prisma/client'
 import { error } from 'console'
+import { useRouter } from 'next/navigation'
 
 export default function ProductsTable() {
+
+  const router = useRouter()
 
   const [products, setProducts] = React.useState([] as product[])
   const [categories, setCategories] = React.useState([] as category[])
@@ -25,10 +28,7 @@ export default function ProductsTable() {
       .then((data) => setCategories(data))
       .catch((error) => console.error("Error fetching categories", error))
   }, [])
-
-  console.log(categories)
-  console.log(products)
-
+  
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCategoryValue = event.target.value;
     setSelectedCategory(selectedCategoryValue !== 'all' ? selectedCategoryValue : null);
@@ -38,6 +38,10 @@ export default function ProductsTable() {
     } else {
       setPlaceholderText('All Categories');
     }
+  }
+
+  const handleAddProductClick = () => {
+    router.push("/products/add")
   }
 
   const filteredProducts = selectedCategory
@@ -59,7 +63,9 @@ export default function ProductsTable() {
             <option key={category.id} value={category.id} className='text-black'>{category.name}</option>
           ))}
         </select>
-        <button className='bg-blue-600 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl'>New Product +</button>
+        <button 
+        className='bg-blue-600 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl'
+        onClick={() => router.push('/products/add')}>New Product +</button>
       </div>
       {filteredProducts.map((item) => (
         <li className='flex flex-row flex-wrap ml-6'>

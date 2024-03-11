@@ -25,13 +25,13 @@ interface ProductCardProps {
 export default function ProductCard(product: ProductCardProps) {
   const [open, setOpen] = React.useState(false);
   return (
-    <div className='flex flex-col mx-2 mt-5 border-2 border-zinc-300 rounded-xl items-center p-2 hover:bg-zinc-300 cursor-pointer'
+    <div className='flex flex-col mx-2 mt-5 shadow-md border-zinc-300 rounded-xl items-center p-2 hover:bg-zinc-300 cursor-pointer bg-white'
       onClick={() => { setOpen(true) }
       }
     >
       <img className='mb-2 w-44 h-44 rounded-xl' src={product.image} alt={product.name}></img>
       <div className='flex flex-col'>
-        <div className='font-bold text-zinc-700 max-w-44'>{product.name}</div>
+        <div className='font-bold text-zinc-700 max-w-44 border-t-2 border-zinc-300 pt-1.5'>{product.name}</div>
         {/* <ul>
         {product.properties.map((property) => (
           <li key={property.name}>
@@ -39,7 +39,7 @@ export default function ProductCard(product: ProductCardProps) {
           </li>
         ))}
       </ul> */}
-        <div className='self-end text-zinc-700'>{product.price.toLocaleString()}</div>
+        <div className='self-end text-zinc-700'>{product.price.toLocaleString()} đ</div>
       </div>
       <Popup
         open={open}
