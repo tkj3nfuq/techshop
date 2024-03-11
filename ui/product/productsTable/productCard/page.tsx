@@ -6,6 +6,12 @@ interface Property {
   value: string
 }
 
+interface Category {
+  name: string,
+  desription: string,
+  mainProps: string[]
+}
+
 interface ProductCardProps {
   name: string,
   image: string,
@@ -19,7 +25,7 @@ interface ProductCardProps {
 export default function ProductCard(product: ProductCardProps) {
   const [open, setOpen] = React.useState(false);
   return (
-    <div className='flex flex-col mx-2 mt-8 border-2 border-zinc-300 rounded-xl items-center p-2 hover:bg-zinc-300 cursor-pointer'
+    <div className='flex flex-col mx-2 mt-5 border-2 border-zinc-300 rounded-xl items-center p-2 hover:bg-zinc-300 cursor-pointer'
       onClick={() => { setOpen(true) }
       }
     >
