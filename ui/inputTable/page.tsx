@@ -20,18 +20,17 @@ export default function InputTable({ category, inputValues, onInputChange, setIn
   if (!category) {
     return null;
   }
-
-  const handleInputChange = (name: string, value: string) => {
-    onInputChange(name, value);
-    console.log("Updated input values:", inputValues);
+  
+  const handleOnChange = (attribute: string, value: string) => {
+    setInputValues({...inputValues, properties: inputValues.properties?.map((prop) => prop.name === attribute ? {name: attribute, value} : prop) || [{name: attribute, value}]});
   };
 
   return (
     <div className='flex flex-col'>
       <Input name="Name" value={inputValues.name || ""} onChange={(value) => setInputValues({...inputValues, name: value})} />
       <Input name="Description" value={inputValues.description || ""} onChange={(value) => setInputValues({...inputValues, description: value})} />
-      {category.mainProps.map((attribute, index) => (
-        <Input key={index} name={attribute} value={inputValues.properties.[""] || ""} onChange={(value) => setInputValues({...inputValues, attribute: value})} />
+      {category.mainProps.map((prop) => (
+        <Input key={prop} name={prop} value={inputValues.properties?.find((p) => p.name === prop)?.value || ""} onChange={(value) => handleOnChange(prop, value)} />
       ))}
       <Input name="Price" value={inputValues.price?.toString() || ""} onChange={(value) => setInputValues({...inputValues, price: value})}  />
     </div>
