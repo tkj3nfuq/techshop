@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/table": "^2.0.28",
     "@prisma/client": "^5.10.2",
     "dotenv": "^16.4.5",
     "git": "^0.1.5",
