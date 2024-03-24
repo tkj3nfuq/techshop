@@ -15,7 +15,7 @@ export default function ProductAddForm() {
   const router = useRouter();
 
   const [categories, setCategories] = React.useState<Category[]>([]);
-  const [inputValues, setInputValues] = React.useState({} as product); 
+  const [inputValues, setInputValues] = React.useState<product>({} as product); 
   const [selectedCategory, setSelectedCategory] = React.useState<Category | null>(null);
 
   React.useEffect(() => {
@@ -26,15 +26,11 @@ export default function ProductAddForm() {
   }, []);
 
   React.useEffect(() =>{
-    setInputValues({...inputValues, properties: []})
-    let result: ProductProperties[] = [];
-    selectedCategory?.mainProps.map((attribute) => {
-      result.push({name: attribute, value: ""})
-    })
-    setInputValues({...inputValues, properties: result})
-    console.log("input values: ", inputValues)
-  }, [selectedCategory]);
-
+    setInputValues( prevInputValues => ({
+      ...prevInputValues,
+      properties: selectedCategory?.mainProps.map((attribute) => ({name: attribute, value: ""})) || []
+    }))
+  }, [selectedCategory])
 
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const categoryId = event.target.value;
