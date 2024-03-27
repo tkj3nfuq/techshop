@@ -27,3 +27,18 @@ export async function POST(req: Request) {
     });
     return NextResponse.json(newProduct);
 }
+
+export async function DELETE(req: Request) {
+    const { productID } = await req.json();
+
+    if (!productID) {
+        throw new Error('Product ID is missing in the request body.');
+    }
+    
+    const deleteProduct = await prisma.product.delete({
+        where: {
+            id: productID
+        }
+    });
+    return NextResponse.json(deleteProduct);
+}

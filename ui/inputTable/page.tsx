@@ -32,7 +32,7 @@ export default function InputTable({ category, inputValues, onInputChange, setIn
       {category.mainProps.map((prop) => (
         <Input key={prop} name={prop} value={inputValues.properties?.find((p) => p.name === prop)?.value || ""} onChange={(value) => handleOnChange(prop, value)} />
       ))}
-      <Input name="Price" value={inputValues.price?.toString() || ""} onChange={(value) => setInputValues({...inputValues, price: value})}  />
+      <Input name="Price" value={inputValues.price?.toString() || ""} onChange={(value) => setInputValues({...inputValues, price: Number(value)})}  />
     </div>
   );
 }

@@ -1,29 +1,22 @@
+import { useRouter } from 'next/navigation';
 import React from 'react'
 import Popup from 'reactjs-popup'
-
-interface Property {
-  name: string,
-  value: string
-}
-
-interface Category {
-  name: string,
-  desription: string,
-  mainProps: string[]
-}
+import { product } from '@prisma/client';
 
 interface ProductCardProps {
-  name: string,
-  image: string,
-  id: string,
-  category: string,
-  description: string,
-  price: number,
-  properties: Property[]
+  product: product,
+  onDeleteClick: (productID: string) => void;
 }
 
-export default function ProductCard(product: ProductCardProps) {
+export default function ProductCard({product, onDeleteClick}: ProductCardProps) {
+
   const [open, setOpen] = React.useState(false);
+
+  const handleDeleteClick = () => {
+    onDeleteClick(product.id),
+    setOpen(false)
+  }
+
   return (
     <div className='flex flex-col mx-2 mt-5 shadow-md border-zinc-300 rounded-xl items-center p-2 hover:bg-zinc-300 cursor-pointer bg-white'
       onClick={() => { setOpen(true) }
@@ -32,13 +25,6 @@ export default function ProductCard(product: ProductCardProps) {
       <img className='mb-2 w-44 h-44 rounded-xl' src={product.image} alt={product.name}></img>
       <div className='flex flex-col'>
         <div className='font-bold text-zinc-700 max-w-44 border-t-2 border-zinc-300 pt-1.5'>{product.name}</div>
-        {/* <ul>
-        {product.properties.map((property) => (
-          <li key={property.name}>
-              {property.name}: {property.value}
-          </li>
-        ))}
-      </ul> */}
         <div className='self-end text-zinc-700'>{product.price.toLocaleString()} đ</div>
       </div>
       <Popup
@@ -67,19 +53,12 @@ export default function ProductCard(product: ProductCardProps) {
               </tbody>
             </table>
           </div>
+          <div className='flex justify-between mt-4'>
+            <button className='bg-green-500 text-white py-2 px-4 ml-2 rounded hover:bg-green-600' >Edit</button>
+            <button className='bg-red-500 text-white py-2 px-4 mr-2 rounded hover:bg-red-600' onClick={handleDeleteClick} >Delete</button>
+          </div>
         </div>
       </Popup>
     </div>
   )
 }
-
-{/* <ul>
-              {product.properties.map(property => (
-                <li key={property.name} className='flex flex-row'>
-                  <div className='font-bold'>
-                    {property.name}:
-                  </div>
-                  <div className='ml-1'>{property.value}</div>
-                </li>
-              ))}
-            </ul> */}

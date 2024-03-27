@@ -40,8 +40,15 @@ export default function ProductsTable() {
     }
   }
 
-  const handleAddProductClick = () => {
-    router.push("/products/add")
+  const handleDeleteClick = (productID: string) => {
+    fetch("api/products", {
+      method: "DELETE",
+      body: JSON.stringify({ productID: productID })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(products.filter(product => product.id !== productID));
+      })
   }
 
   const filteredProducts = selectedCategory
@@ -69,79 +76,16 @@ export default function ProductsTable() {
       </div>
       {filteredProducts.map((item) => (
         <li className='flex flex-row flex-wrap ml-6'>
-          <ProductCard
-            key={item.id}
-            name={item.name}
-            image={item.image}
-            id={item.id}
-            category={item.category.toString()}
-            description={item.description}
-            properties={item.properties}
-            price={item.price}
-          />
-          <ProductCard
-            name={item.name}
-            image={item.image}
-            id={item.id}
-            category={item.category}
-            description={item.description}
-            properties={item.properties}
-            price={item.price}
-          />
-          <ProductCard
-            name={item.name}
-            image={item.image}
-            id={item.id}
-            category={item.category}
-            description={item.description}
-            properties={item.properties}
-            price={item.price}
-          />
-          <ProductCard
-            name={item.name}
-            image={item.image}
-            id={item.id}
-            category={item.category}
-            description={item.description}
-            properties={item.properties}
-            price={item.price}
-          />
-          <ProductCard
-            name={item.name}
-            image={item.image}
-            id={item.id}
-            category={item.category}
-            description={item.description}
-            properties={item.properties}
-            price={item.price}
-          />
-          <ProductCard
-            name={item.name}
-            image={item.image}
-            id={item.id}
-            category={item.category}
-            description={item.description}
-            properties={item.properties}
-            price={item.price}
-          />
-          <ProductCard
-            name={item.name}
-            image={item.image}
-            id={item.id}
-            category={item.category}
-            description={item.description}
-            properties={item.properties}
-            price={item.price}
-          />
-          <ProductCard
-            name={item.name}
-            image={item.image}
-            id={item.id}
-            category={item.category}
-            description={item.description}
-            properties={item.properties}
-            price={item.price}
-          />
+          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
+          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
+          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
+          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
+          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
+          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
+          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
+          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
+          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
+          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
         </li>
       ))}
     </div>
