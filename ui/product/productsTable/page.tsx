@@ -2,17 +2,25 @@
 
 import React from 'react'
 import ProductCard from './productCard/page'
-import { product, category } from '@prisma/client'
+import { product, category as CategoryType } from '@prisma/client'
 import { error } from 'console'
 import { useRouter } from 'next/navigation'
+import EditTable from '@/ui/editTable/page'
+
+interface Property {
+  name: string;
+}
+
+type Category = CategoryType & { mainProps: Property[] };
 
 export default function ProductsTable() {
 
   const router = useRouter()
 
   const [products, setProducts] = React.useState([] as product[])
-  const [categories, setCategories] = React.useState([] as category[])
-  const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null)
+  const [selectedProduct, setSelectedProduct] = React.useState<product | null>(null);
+  const [categories, setCategories] = React.useState([] as Category[])
+  const [selectedCategory, setSelectedCategory] = React.useState<Category | null>(null);
   const [placeolderText, setPlaceholderText] = React.useState<string>('All Categories')
 
   React.useEffect(() => {
@@ -31,14 +39,16 @@ export default function ProductsTable() {
   
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCategoryValue = event.target.value;
-    setSelectedCategory(selectedCategoryValue !== 'all' ? selectedCategoryValue : null);
+    
+    setSelectedCategory(selectedCategoryValue !== 'all' ? categories.find(category => category.id === selectedCategoryValue) || null : null);
+    
     if (selectedCategoryValue !== 'all') {
       const selectedCategoryName = categories.find(category => category.id === selectedCategoryValue)?.name;
       setPlaceholderText(selectedCategoryName || 'All Categories');
     } else {
       setPlaceholderText('All Categories');
     }
-  }
+  }  
 
   const handleDeleteClick = (productID: string) => {
     fetch("api/products", {
@@ -51,8 +61,12 @@ export default function ProductsTable() {
       })
   }
 
+  const handleEditClick = (selectedProduct: product) => {
+    router.push("/products/" + selectedProduct.id)
+  };
+
   const filteredProducts = selectedCategory
-    ? products.filter((item) => item.category.toString() === selectedCategory)
+    ? products.filter((item) => item.category === selectedCategory.id)
     : products;
 
   return (
@@ -60,7 +74,7 @@ export default function ProductsTable() {
       <div className='flex flex-row justify-between'>
         <select
           className='mt-4 ml-6 border border-gray-300 rounded-xl px-3 py-2 focus:outline-none'
-          value={selectedCategory || 'all'}
+          value={selectedCategory?.name || 'all'}
           onChange={handleCategoryChange}
           required
         >
@@ -76,16 +90,17 @@ export default function ProductsTable() {
       </div>
       {filteredProducts.map((item) => (
         <li className='flex flex-row flex-wrap ml-6'>
-          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
-          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
-          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
-          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
-          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
-          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
-          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
-          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
-          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
-          <ProductCard product={item} onDeleteClick={handleDeleteClick}/>
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
         </li>
       ))}
     </div>

@@ -2,19 +2,33 @@ import { useRouter } from 'next/navigation';
 import React from 'react'
 import Popup from 'reactjs-popup'
 import { product } from '@prisma/client';
+import InputTable from '@/ui/inputTable/page';
+
+interface Category {
+  name: string;
+  description: string;
+  mainProps: string[];
+}
 
 interface ProductCardProps {
   product: product,
-  onDeleteClick: (productID: string) => void;
+  category: Category | null,
+  onDeleteClick: (productID: string) => void,
+  onEditClick: (product: product) => void,
 }
 
-export default function ProductCard({product, onDeleteClick}: ProductCardProps) {
-
+export default function ProductCard({product, onDeleteClick, onEditClick, category}: ProductCardProps) {
+  const router = useRouter();
+  
   const [open, setOpen] = React.useState(false);
 
   const handleDeleteClick = () => {
     onDeleteClick(product.id),
     setOpen(false)
+  }
+
+  const handleEditClick = () => {
+    onEditClick(product)
   }
 
   return (
@@ -54,7 +68,7 @@ export default function ProductCard({product, onDeleteClick}: ProductCardProps) 
             </table>
           </div>
           <div className='flex justify-between mt-4'>
-            <button className='bg-green-500 text-white py-2 px-4 ml-2 rounded hover:bg-green-600' >Edit</button>
+            <button className='bg-green-500 text-white py-2 px-4 ml-2 rounded hover:bg-green-600' onClick={handleEditClick} >Edit</button>
             <button className='bg-red-500 text-white py-2 px-4 mr-2 rounded hover:bg-red-600' onClick={handleDeleteClick} >Delete</button>
           </div>
         </div>

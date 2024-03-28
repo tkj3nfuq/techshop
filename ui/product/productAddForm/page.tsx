@@ -39,13 +39,6 @@ export default function ProductAddForm() {
     setSelectedCategory(selectedCat || null);
   };
 
-  const handleInputChange = (name: string, value: string) => {
-    setInputValues(prevInputValues => ({
-      ...prevInputValues,
-      [name]: value,
-    }));
-  };
-
   const handleSubmit = () => {
     fetch("/api/products", {
       method: "POST",
@@ -75,7 +68,7 @@ export default function ProductAddForm() {
         </select>
       </div>
       <div className='ml-10'>
-        <InputTable category={selectedCategory} inputValues={inputValues} onInputChange={handleInputChange} setInputValues={setInputValues}/>
+        <InputTable category={selectedCategory} inputValues={inputValues} setInputValues={setInputValues}/>
       </div>
       <button
         className='bg-blue-600 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl mb-4'

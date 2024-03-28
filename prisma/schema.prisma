@@ -7,7 +7,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+type OrderProductList {
+  product  String
+  quantity String
+}
+
 type ProductProperties {
+  name  String
+  value String
+}
+
+type UserAddress {
   name  String
   value String
 }
@@ -34,12 +44,52 @@ model invoice {
   userInfo  String
 }
 
+model order {
+  id            String             @id @default(auto()) @map("_id") @db.ObjectId
+  paymentMethod String
+  productList   OrderProductList[]
+  status        String
+  subTotal      Int
+  total         Int
+  user          String
+  voucher       String
+}
+
 model product {
   id          String              @id @default(auto()) @map("_id") @db.ObjectId
+  brand       String              @db.ObjectId
   category    String              @db.ObjectId
   description String
   image       String
   name        String
   price       Int
   properties  ProductProperties[]
+}
+
+model review {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  comment String
+  product String @db.ObjectId
+  rate    Float
+  user    String @db.ObjectId
+}
+
+model user {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  address     UserAddress[]
+  dateOfBirth DateTime      @db.Date
+  email       String
+  fullname    String
+  password    String
+  phoneNumber String
+  role        String
+  username    String
+}
+
+model voucher {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  code        String
+  condition   String
+  description String
+  quantity    Int
 }

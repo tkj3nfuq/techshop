@@ -11,11 +11,10 @@ interface Category {
 interface InputTableProps {
   category: Category | null;
   inputValues: product;
-  onInputChange: (name: string, value: string) => void;
   setInputValues: any;
 }
 
-export default function InputTable({ category, inputValues, onInputChange, setInputValues }: InputTableProps) {
+export default function InputTable({ category, inputValues, setInputValues }: InputTableProps) {
   
   if (!category) {
     return null;
