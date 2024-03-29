@@ -36,19 +36,19 @@ export default function ProductsTable() {
       .then((data) => setCategories(data))
       .catch((error) => console.error("Error fetching categories", error))
   }, [])
-  
+
   const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCategoryValue = event.target.value;
-    
+
     setSelectedCategory(selectedCategoryValue !== 'all' ? categories.find(category => category.id === selectedCategoryValue) || null : null);
-    
+
     if (selectedCategoryValue !== 'all') {
       const selectedCategoryName = categories.find(category => category.id === selectedCategoryValue)?.name;
       setPlaceholderText(selectedCategoryName || 'All Categories');
     } else {
       setPlaceholderText('All Categories');
     }
-  }  
+  }
 
   const handleDeleteClick = (productID: string) => {
     fetch("api/products", {
@@ -84,23 +84,23 @@ export default function ProductsTable() {
             <option key={category.id} value={category.id} className='text-black'>{category.name}</option>
           ))}
         </select>
-        <button 
-        className='bg-blue-600 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl'
-        onClick={() => router.push('/products/add')}>New Product +</button>
+        <button
+          className='bg-blue-600 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl'
+          onClick={() => router.push('/products/add')}>New Product +</button>
       </div>
       {filteredProducts.map((item) => (
         <li className='flex flex-row flex-wrap ml-6'>
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick}/>
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
+          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
         </li>
       ))}
     </div>

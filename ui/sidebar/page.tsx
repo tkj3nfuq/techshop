@@ -20,8 +20,8 @@ export default function SideBar() {
             path: "/invoices"
         },
         {
-            title: "Customers",
-            path: "/customers"
+            title: "Users",
+            path: "/users"
         },
         {
             title: "Reports",
@@ -30,7 +30,7 @@ export default function SideBar() {
     ]
 
     return (
-        <div>
+        <div className=''>
             <div className="flex items-center">
                 <h1 className='font-extrabold text-white text-3xl mx-auto pt-2 mb-2 mt-2'>TechShop</h1>
             </div>
@@ -44,3 +44,5 @@ export default function SideBar() {
         </div>
     )
 }
+
+

@@ -7,7 +7,7 @@ export default function layout({children}: {children: React.ReactNode}) {
         <div className='z-50 w-64 h-screen'>
             <SideBar />
         </div>
-        <div className="-ms-8 w-full flex flex-col">
+        <div className="w-full flex flex-col bg-slate-50">
             {children}
         </div>
     </div>
