@@ -5,7 +5,7 @@ import ProductCard from './productCard/page'
 import { product, category as CategoryType } from '@prisma/client'
 import { error } from 'console'
 import { useRouter } from 'next/navigation'
-import EditTable from '@/ui/editTable/page'
+import EditTable from '@/ui/productEditTable/page'
 
 interface Property {
   name: string;

@@ -1,3 +1,4 @@
+import { user } from '@prisma/client';
 import React from 'react';
 import Popup from 'reactjs-popup';
 
@@ -18,22 +19,32 @@ interface UserCardProps {
         password: string,
         address: Address[],
     };
+    onDeleteClick: (userID: string) => void,
+    onEditClick: (user: user) => void,
 }
 
-export default function UserCard({ user }: UserCardProps) {
+export default function UserCard({ user, onDeleteClick, onEditClick }: UserCardProps) {
     const [open, setOpen] = React.useState(false);
 
     const formatDate = (dateString: string) => {
         const date = new Date(dateString);
-        
+
         date.setDate(date.getDate() - 1);
         const day = String(date.getDate()).padStart(2, '0');
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const year = date.getFullYear();
-    
+
         return `${day}/${month}/${year}`;
     };
-    
+
+    const handleDeleteClick = () => {
+        onDeleteClick(user.id);
+        setOpen(false)
+    }
+
+    const handleEditClick = () => {
+        onEditClick(user);
+    }
 
     return (
         <div
@@ -60,10 +71,6 @@ export default function UserCard({ user }: UserCardProps) {
                     <div className='content flex mx-1.5'>
                         <table className='mb-2'>
                             <tbody>
-                                <tr className='border-b border-gray-300'>
-                                    <td className='py-2 px-4 font-bold'>UserID: </td>
-                                    <td className='py-2 px-4'>{user.id}</td>
-                                </tr>
                                 <tr className='border-b border-gray-300'>
                                     <td className='py-2 px-4 font-bold'>Full Name: </td>
                                     <td className='py-2 px-4'>{user.fullname}</td>
@@ -102,6 +109,10 @@ export default function UserCard({ user }: UserCardProps) {
                                 ))}
                             </tbody>
                         </table>
+                    </div>
+                    <div className='flex justify-between mt-4'>
+                        <button className='bg-green-500 text-white py-2 px-4 ml-2 rounded hover:bg-green-600' onClick={handleEditClick} >Edit</button>
+                        <button className='bg-red-500 text-white py-2 px-4 mr-2 rounded hover:bg-red-600' onClick={handleDeleteClick} >Delete</button>
                     </div>
                 </div>
             </Popup>

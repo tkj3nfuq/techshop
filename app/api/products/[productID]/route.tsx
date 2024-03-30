@@ -1,7 +1,5 @@
-import { Prisma } from '@prisma/client'
 import { PrismaClient, product, ProductProperties } from '@prisma/client'
 import { NextResponse } from 'next/server';
-import React from 'react'
 
 const prisma = new PrismaClient();
 
@@ -26,7 +24,7 @@ export async function PATCH(req: Request) {
         throw new Error('Product ID is missing in the request body.');
     }
 
-    const newProduct = await prisma.product.update({
+    const updatedProduct = await prisma.product.update({
         where: {
             id: productID,
         },
@@ -39,5 +37,5 @@ export async function PATCH(req: Request) {
             properties: properties
         },
     });
-    return NextResponse.json(newProduct);
+    return NextResponse.json(updatedProduct);
 }

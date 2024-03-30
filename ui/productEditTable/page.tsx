@@ -32,7 +32,7 @@ export default function EditTable({ productID }: EditProductFormProps) {
     };
 
     return (
-        <div className='flex flex-col'>
+        <div className='flex flex-col mx-10 mt-4'>
             <Input name="Name" value={updatedProduct.name || ""} onChange={(value) => setUpdatedProduct({ ...updatedProduct, name: value })} />
             <Input name="Description" value={updatedProduct.description || ""} onChange={(value) => setUpdatedProduct({ ...updatedProduct, description: value })} />
             {updatedProduct.properties?.map((prop, index) => (
@@ -40,7 +40,7 @@ export default function EditTable({ productID }: EditProductFormProps) {
             ))}
             <Input name="Price" value={updatedProduct.price?.toString() || ""} onChange={(value) => setUpdatedProduct({ ...updatedProduct, price: Number(value) })} />
             <button
-                className='bg-blue-600 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl mb-4' 
+                className='bg-blue-600 self-end font-bold text-md px-4 py-2 rounded-xl mb-4' 
                 onClick={handleUpdateClick}
                 >Update Product
             </button>
