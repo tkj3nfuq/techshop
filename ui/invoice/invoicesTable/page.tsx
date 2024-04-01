@@ -2,28 +2,40 @@
 
 import React from 'react'
 import InvoiceCard from './invoiceCard/page'
-import { invoice } from '@prisma/client'
+import { order } from '@prisma/client'
 
 
 export default function InvoicesTable() {
-    const [invoices, setInvoices] = React.useState([] as invoice[])
+    const [invoices, setInvoices] = React.useState([] as order[])
 
     React.useEffect(() => {
         fetch("/api/invoices")
-        .then((data) => data.json())
-        .then((data) => setInvoices(data))
+            .then((data) => data.json())
+            .then((data) => setInvoices(data))
     }, [])
 
     return (
-        <div className='flex flex-col my-4'>
-            {invoices.map((item) => (
-                <InvoiceCard 
-                invoiceID={item.id}  
-                status={item.status}
-                userInfo={item.userInfo}
-                createdAt={item.createdAt}
-                />
-            ))}
+        <div className='flex flex-col bg-slate-50 h-full'>
+            <button
+                className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 mr-6 mt-4 mx-10 rounded-xl'
+            >New Invoices +</button>
+            <ul className="mb-4 mx-10 mt-4">
+                <li className="flex bg-white py-2 px-4">
+                    <div className="flex-1 text-black font-semibold">Oder</div>
+                    <div className="flex-1 text-black font-semibold">Full Name</div>
+                    <div className="flex-1 text-black font-semibold">Payment Method</div>
+                    <div className="flex-1 text-black font-semibold">Total</div>
+                    <div className="flex-1 text-black font-semibold">Status</div>
+                </li>
+            </ul>
+            <ul>
+                {invoices.map((item, index) => (
+                    <li className='flex flex-col mx-10'>
+                        <InvoiceCard invoice={item} index={index + 1} />
+                    </li>
+                ))}
+            </ul>
         </div>
+
     )
 }

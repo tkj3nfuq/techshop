@@ -85,7 +85,7 @@ export default function ProductsTable() {
           ))}
         </select>
         <button
-          className='bg-blue-600 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl'
+          className='bg-blue-600 hover:bg-blue-700 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl'
           onClick={() => router.push('/products/add')}>New Product +</button>
       </div>
       {filteredProducts.map((item) => (

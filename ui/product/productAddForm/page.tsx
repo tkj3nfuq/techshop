@@ -71,7 +71,7 @@ export default function ProductAddForm() {
         <InputTable category={selectedCategory} inputValues={inputValues} setInputValues={setInputValues}/>
       </div>
       <button
-        className='bg-blue-600 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl mb-4'
+        className='bg-blue-600 hover:bg-blue-700 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl mb-4'
         onClick={handleSubmit}
         >New Product +</button>
     </div>

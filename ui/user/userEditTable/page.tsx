@@ -76,7 +76,7 @@ export default function UserEditTable({ userID }: UserEditTableProps) {
                 />
             ))}
             <button
-                className='bg-blue-600 self-end font-bold text-md px-4 py-2 rounded-xl mb-4' 
+                className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 rounded-xl mb-4' 
                 onClick={handleUpdateClick}
                 >Update User
             </button>
