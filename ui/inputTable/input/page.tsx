@@ -18,7 +18,7 @@ export default function Input({ name, value, onChange }: InputProps) {
       <input
         className='ml-4 px-3 py-2 bg-white w-full max-w-screen-md border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500'
         type='text'
-        placeholder='Enter your text...'
+        placeholder='Enter your text...'  
         value={value}
         style={{ color: 'black' }}
         onChange={handleInputChange}

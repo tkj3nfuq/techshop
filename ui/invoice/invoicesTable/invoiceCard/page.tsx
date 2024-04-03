@@ -1,5 +1,7 @@
 import { order, user } from '@prisma/client';
+import { useRouter } from 'next/navigation';
 import React from 'react'
+import Popup from 'reactjs-popup';
 
 interface InvoiceCardProps {
     invoice: order,
@@ -7,7 +9,9 @@ interface InvoiceCardProps {
 }
 
 export default function InvoiceCard({ invoice, index }: InvoiceCardProps) {
+    const router = useRouter();
 
+    const [open, setOpen] = React.useState(false);
     const [selectedUser, setSelectedUser] = React.useState<user>({} as user);
 
     React.useEffect(() => {
@@ -37,8 +41,14 @@ export default function InvoiceCard({ invoice, index }: InvoiceCardProps) {
             break;
     }
 
+    const handleInvoiceCardClick = () => {
+        router.push('/invoices/' + invoice.id)
+    }
+
     return (
-        <div className='flex flex-row bg-white hover:bg-zinc-300 cursor-pointer shadow-md rounded-lg p-4 mb-4'>
+        <div className='flex flex-row bg-white hover:bg-zinc-300 cursor-pointer shadow-md rounded-lg p-4 mb-4'
+            onClick={handleInvoiceCardClick}
+        >
             <div className='flex-1 text-gray-600 mr-4'>{index}</div>
             <div className='flex-1 text-gray-600 mr-4'>{selectedUser.fullname}</div>
             <div className='flex-1 text-gray-600 mr-4'>{invoice.paymentMethod}</div>
