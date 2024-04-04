@@ -15,6 +15,17 @@ export default function BrandPage() {
         .then((data) => setBrands(data))
     }, [])
 
+    const onDeleteClick = (brandID: string) => {
+        fetch('api/brands', {
+            method: "DELETE",
+            body: JSON.stringify({ brandID: brandID })
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setBrands(brands.filter(brand => brand.id !== brandID))
+            })
+    }
+
     return (
         <div className='flex flex-col bg-slate-50 h-full'>
             <button
@@ -32,7 +43,7 @@ export default function BrandPage() {
             <ul>
                 {brands.map((brand, index) => (
                     <li className='flex flex-col mx-10'>
-                        <BrandCard brand={brand} index={index+1} />
+                        <BrandCard brand={brand} index={index+1} onDeleteClick={onDeleteClick}/>
                     </li>
                 ))}
             </ul>
