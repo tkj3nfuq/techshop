@@ -19,7 +19,7 @@ const handler = NextAuth({
                         password: credentials?.password
                     }
                 })
-                console.log(user)
+                
                 if (user) {
                     return Promise.resolve({id: user.id, name: user.username})
                 } else {

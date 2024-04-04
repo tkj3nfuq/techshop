@@ -51,7 +51,7 @@ model order {
   status        String
   subTotal      Int
   total         Int
-  user          String
+  user_id       String
   voucher       String
 }
 

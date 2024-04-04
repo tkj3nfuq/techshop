@@ -7,7 +7,23 @@ const prisma = new PrismaClient();
 
 export async function GET() {
   const invoices = await prisma.order.findMany({
-    
   });
-  return NextResponse.json(invoices);
+
+  const users = await prisma.user.findMany({
+    where: {
+      id: {
+        in: invoices.map((invoice) => invoice.user_id)
+      }
+    }
+  });
+
+  const result = invoices.map((invoice) => {
+    const user = users.find((user) => user.id === invoice.user_id);
+    return {
+      ...invoice,
+      user
+    }
+  });
+
+  return NextResponse.json(result);
 }

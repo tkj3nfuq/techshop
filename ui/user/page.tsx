@@ -39,7 +39,7 @@ export default function User() {
             >New User +</button>
             <ul className="mb-4 mx-10 mt-4">
                 <li className="flex bg-white py-2 px-4">
-                    <div className="flex-1 text-black font-semibold">Fullname</div>
+                    <div className="flex-1 text-black font-semibold">Full Name</div>
                     <div className="flex-1 text-black font-semibold">Role</div>
                     <div className="flex-1 text-black font-semibold">Email</div>
                     <div className="flex-1 text-black font-semibold">Phone Number</div>

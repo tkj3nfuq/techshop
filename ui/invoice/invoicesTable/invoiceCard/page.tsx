@@ -4,8 +4,12 @@ import React from 'react'
 import Popup from 'reactjs-popup';
 
 interface InvoiceCardProps {
-    invoice: order,
+    invoice: Order,
     index: number
+}
+
+interface Order extends Omit<order, 'user'> {
+    user: user
 }
 
 export default function InvoiceCard({ invoice, index }: InvoiceCardProps) {
@@ -13,12 +17,6 @@ export default function InvoiceCard({ invoice, index }: InvoiceCardProps) {
 
     const [open, setOpen] = React.useState(false);
     const [selectedUser, setSelectedUser] = React.useState<user>({} as user);
-
-    React.useEffect(() => {
-        fetch('/api/users/' + invoice.user)
-            .then((data) => data.json())
-            .then((data) => setSelectedUser(data))
-    }, [])
 
     let statusColor;
     let statusText;
@@ -50,7 +48,7 @@ export default function InvoiceCard({ invoice, index }: InvoiceCardProps) {
             onClick={handleInvoiceCardClick}
         >
             <div className='flex-1 text-gray-600 mr-4'>{index}</div>
-            <div className='flex-1 text-gray-600 mr-4'>{selectedUser.fullname}</div>
+            <div className='flex-1 text-gray-600 mr-4'>{invoice.user.fullname}</div>
             <div className='flex-1 text-gray-600 mr-4'>{invoice.paymentMethod}</div>
             <div className='flex-1 text-gray-600 mr-4'>{invoice.total}</div>
             <div className={`flex-1 ${statusColor} mr-4`}>{statusText}</div>

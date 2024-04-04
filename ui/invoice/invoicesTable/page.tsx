@@ -2,11 +2,14 @@
 
 import React from 'react'
 import InvoiceCard from './invoiceCard/page'
-import { order } from '@prisma/client'
+import { order, user } from '@prisma/client'
 
+interface Order extends Omit<order, 'user'> {
+    user: user
+}
 
 export default function InvoicesTable() {
-    const [invoices, setInvoices] = React.useState([] as order[])
+    const [invoices, setInvoices] = React.useState([] as Order[])
 
     React.useEffect(() => {
         fetch("/api/invoices")

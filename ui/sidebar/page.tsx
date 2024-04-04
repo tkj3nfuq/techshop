@@ -12,6 +12,10 @@ export default function SideBar() {
             path: "/products"
         },
         {
+            title: "Brands",
+            path: "/brands"
+        },
+        {
             title: "Inventory",
             path: "/inventory"
         },
