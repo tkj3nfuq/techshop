@@ -26,6 +26,10 @@ export default function BrandPage() {
             })
     }
 
+    const onEditClick = (brandID: string) => {
+        router.push(`/brands/${brandID}`)
+    }
+
     return (
         <div className='flex flex-col bg-slate-50 h-full'>
             <button
@@ -43,7 +47,7 @@ export default function BrandPage() {
             <ul>
                 {brands.map((brand, index) => (
                     <li className='flex flex-col mx-10'>
-                        <BrandCard brand={brand} index={index+1} onDeleteClick={onDeleteClick}/>
+                        <BrandCard brand={brand} index={index+1} onDeleteClick={onDeleteClick} onEditClick={onEditClick}/>
                     </li>
                 ))}
             </ul>

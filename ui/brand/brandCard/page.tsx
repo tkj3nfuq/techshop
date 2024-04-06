@@ -6,13 +6,19 @@ interface BrandCardProps {
     brand: brand,
     index: number,
     onDeleteClick: (brandID: string) => void,
+    onEditClick: (brandID: string) => void
 }
 
-export default function BrandCard({ brand, index, onDeleteClick }: BrandCardProps) {
+export default function BrandCard({ brand, index, onDeleteClick, onEditClick }: BrandCardProps) {
     const [open, setOpen] = React.useState(false);
 
     const handleDeleteClick = () => {
         onDeleteClick(brand.id);
+        setOpen(false)
+    }
+
+    const handleEditClick = () => {
+        onEditClick(brand.id);
         setOpen(false)
     }
 
@@ -53,7 +59,7 @@ export default function BrandCard({ brand, index, onDeleteClick }: BrandCardProp
                         </table>
                     </div>
                     <div className='flex justify-between mt-4'>
-                        <button className='bg-green-500 text-white py-2 px-4 ml-2 rounded hover:bg-green-600'>Edit</button>
+                        <button className='bg-green-500 text-white py-2 px-4 ml-2 rounded hover:bg-green-600' onClick={handleEditClick}>Edit</button>
                         <button className='bg-red-500 text-white py-2 px-4 mr-2 rounded hover:bg-red-600' onClick={handleDeleteClick}>Delete</button>
                     </div>
                 </div>
