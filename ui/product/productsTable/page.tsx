@@ -73,8 +73,8 @@ export default function ProductsTable() {
     <div className='flex flex-col'>
       <div className='flex flex-row justify-between'>
         <select
-          className='mt-4 ml-6 border border-gray-300 rounded-xl px-3 py-2 focus:outline-none'
-          value={selectedCategory?.name || 'all'}
+          className='mt-4 ml-6 cursor-pointer hover:bg-slate-100 text-black border border-gray-300 rounded-xl px-3 py-2 focus:outline-none'
+          value={selectedCategory ? selectedCategory.id : 'all'}
           onChange={handleCategoryChange}
           required
         >
@@ -88,21 +88,13 @@ export default function ProductsTable() {
           className='bg-blue-600 hover:bg-blue-700 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl'
           onClick={() => router.push('/products/add')}>New Product +</button>
       </div>
-      {filteredProducts.map((item) => (
-        <li className='flex flex-row flex-wrap ml-6'>
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
-          <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
-        </li>
-      ))}
+      <div className='flex flex-row flex-wrap'>
+        {filteredProducts.map((item) => (
+          <li className='flex flex-row flex-wrap ml-6'>
+            <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
+          </li>
+        ))}
+      </div>
     </div>
   )
 }

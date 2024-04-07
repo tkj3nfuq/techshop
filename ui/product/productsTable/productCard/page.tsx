@@ -1,7 +1,7 @@
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import Popup from 'reactjs-popup'
-import { product } from '@prisma/client';
+import { brand, product } from '@prisma/client';
 import InputTable from '@/ui/inputTable/page';
 
 interface Category {
@@ -17,14 +17,22 @@ interface ProductCardProps {
   onEditClick: (product: product) => void,
 }
 
-export default function ProductCard({product, onDeleteClick, onEditClick, category}: ProductCardProps) {
+export default function ProductCard({ product, onDeleteClick, onEditClick, category }: ProductCardProps) {
   const router = useRouter();
-  
+
   const [open, setOpen] = React.useState(false);
+  const [brand, setBrand] = React.useState<brand>({} as brand);
+
+  React.useEffect(() => {
+    fetch(`/api/brands/` + product.brand)
+      .then((res) => res.json())
+      .then((data) => setBrand(data))
+  }, [])
+
 
   const handleDeleteClick = () => {
     onDeleteClick(product.id),
-    setOpen(false)
+      setOpen(false)
   }
 
   const handleEditClick = () => {
@@ -32,7 +40,7 @@ export default function ProductCard({product, onDeleteClick, onEditClick, catego
   }
 
   return (
-    <div className='flex flex-col mx-2 mt-5 shadow-md border-zinc-300 rounded-xl items-center p-2 hover:bg-zinc-300 cursor-pointer bg-white'
+    <div className='flex flex-col w-[190px] mt-5 shadow-md border-zinc-300 rounded-xl p-2 hover:bg-zinc-300 cursor-pointer bg-white'
       onClick={() => { setOpen(true) }
       }
     >
@@ -64,6 +72,10 @@ export default function ProductCard({product, onDeleteClick, onEditClick, catego
                     <td className='py-2 px-4'>{property.value}</td>
                   </tr>
                 ))}
+                <tr className='border-b border-gray-300'>
+                  <td className='py-2 px-4 font-bold'>Brand: </td>
+                  <td className='py-2 px-4'>{brand.name}</td>
+                </tr>
               </tbody>
             </table>
           </div>
