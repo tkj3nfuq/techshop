@@ -34,7 +34,7 @@ export default function User() {
     return (
         <div className='flex flex-col bg-slate-50 h-full'>
             <button
-                className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 mr-6 mt-4 mx-10 rounded-xl'
+                className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 mr-6 mt-4 mx-10 rounded-xl transition duration-300 ease-in-out transform hover:scale-105'
                 onClick={() => { route.push("users/add") }}
             >New User +</button>
             <ul className="mb-4 mx-10 mt-4">

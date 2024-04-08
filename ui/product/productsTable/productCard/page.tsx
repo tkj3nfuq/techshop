@@ -40,7 +40,7 @@ export default function ProductCard({ product, onDeleteClick, onEditClick, categ
   }
 
   return (
-    <div className='flex flex-col w-[190px] mt-5 shadow-md border-zinc-300 rounded-xl p-2 hover:bg-zinc-300 cursor-pointer bg-white'
+    <div className='flex flex-col w-[190px] mt-5 shadow-md border-zinc-300 rounded-xl p-2 hover:bg-zinc-300 cursor-pointer bg-white transition duration-300 ease-in-out transform hover:scale-105'
       onClick={() => { setOpen(true) }
       }
     >
@@ -59,7 +59,7 @@ export default function ProductCard({ product, onDeleteClick, onEditClick, categ
         <div className='modal flex flex-col text-black bg-white p-3 rounded-xl max-w-3xl'>
           <div className='flex flex-row justify-between mb-2 '>
             <div className='header font-bold text-xl'>{product.name}</div>
-            <button className='self-end close bg-blue-600 rounded-xl h-6 w-6 text-white text-center justify-center items-center' onClick={() => setOpen(false)}>
+            <button className='self-end close bg-blue-600 rounded-xl h-6 w-6 text-white text-center justify-center items-center transition duration-300 ease-in-out transform hover:scale-105' onClick={() => setOpen(false)}>
               &times;
             </button>
           </div>
@@ -80,8 +80,8 @@ export default function ProductCard({ product, onDeleteClick, onEditClick, categ
             </table>
           </div>
           <div className='flex justify-between mt-4'>
-            <button className='bg-green-500 text-white py-2 px-4 ml-2 rounded hover:bg-green-600' onClick={handleEditClick} >Edit</button>
-            <button className='bg-red-500 text-white py-2 px-4 mr-2 rounded hover:bg-red-600' onClick={handleDeleteClick} >Delete</button>
+            <button className='bg-green-500 text-white py-2 px-4 ml-2 rounded hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105' onClick={handleEditClick} >Edit</button>
+            <button className='bg-red-500 text-white py-2 px-4 mr-2 rounded hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105' onClick={handleDeleteClick} >Delete</button>
           </div>
         </div>
       </Popup>

@@ -9,7 +9,7 @@ export default function layout({children}: {children: React.ReactNode}) {
             <SideBar />
         </div>
         <div className="w-full flex flex-col bg-slate-50">
-            <ProductNavBar/>
+            <ProductNavBar name='Products'/>
             {children}
         </div>
     </div>

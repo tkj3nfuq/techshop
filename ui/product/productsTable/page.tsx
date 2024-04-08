@@ -71,9 +71,9 @@ export default function ProductsTable() {
 
   return (
     <div className='flex flex-col'>
-      <div className='flex flex-row justify-between'>
+      <div className='flex flex-row justify-between mt-4'>
         <select
-          className='mt-4 ml-6 cursor-pointer hover:bg-slate-100 text-black border border-gray-300 rounded-xl px-3 py-2 focus:outline-none'
+          className='ml-6 cursor-pointer hover:bg-slate-100 text-black border border-gray-300 rounded-xl px-3 py-2 focus:outline-none transition duration-300 ease-in-out'
           value={selectedCategory ? selectedCategory.id : 'all'}
           onChange={handleCategoryChange}
           required
@@ -85,7 +85,7 @@ export default function ProductsTable() {
           ))}
         </select>
         <button
-          className='bg-blue-600 hover:bg-blue-700 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl'
+          className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl transition duration-300 ease-in-out transform hover:scale-105'
           onClick={() => router.push('/products/add')}>New Product +</button>
       </div>
       <div className='flex flex-row flex-wrap'>

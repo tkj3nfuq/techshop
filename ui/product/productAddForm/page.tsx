@@ -66,7 +66,7 @@ export default function ProductAddForm() {
       <div className='flex flex-row justify-between'>
         <div className='mt-2 ml-4 text-black text-xl font-bold'>Adding New Product</div>
         <select
-          className='mt-4 cursor-pointer mr-4 hover:bg-slate-100 text-black border border-gray-300 rounded-xl px-3 py-2 focus:outline-none'
+          className='mt-4 cursor-pointer mr-4 hover:bg-slate-100 text-black border border-gray-300 rounded-xl px-3 py-2 focus:outline-none transition duration-300 ease-in-out'
           value={selectedCategory ? selectedCategory.id : 'all'}
           onChange={handleCategoryChange}
           required
@@ -94,7 +94,7 @@ export default function ProductAddForm() {
             return (
               <div className="relative ml-10 mb-2 shadow-md w-[200px] h-[200px] rounded-lg overflow-hidden">
                 <img src={image} className="object-cover w-full h-full rounded-lg" alt="Uploaded Image" />
-                <button onClick={() => open()} className="absolute inset-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center text-white text-sm font-semibold hover:bg-opacity-70 focus:outline-none">
+                <button onClick={() => open()} className="absolute inset-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center text-white text-sm font-semibold hover:bg-opacity-70 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105">
                   Change Image
                 </button>
               </div>
@@ -102,14 +102,15 @@ export default function ProductAddForm() {
           }
           return (
             <div className="relative ml-10 mb-2 shadow-md w-[1025px] h-[60px] rounded-lg overflow-hidden">
-              <button onClick={() => open()} className="absolute inset-0 w-full h-full bg-gray-200 flex justify-center items-center text-gray-700 font-semibold hover:bg-gray-300 focus:outline-none">
+              <button onClick={() => open()} className="absolute inset-0 w-full h-full bg-gray-200 flex justify-center items-center text-gray-700 font-semibold hover:bg-gray-300 focus:outline-none transition duration-300 ease-in-out transform hover:scale-105">
                 Upload Product's Image
               </button>
             </div>
           )
         }}
       </CldUploadWidget>
-      <select className='mt-4 mb-2 ml-10 w-[1025px] h-[60px] cursor-pointer hover:bg-slate-100 text-black border border-gray-300 rounded-xl px-3 py-2 focus:outline-none' value={inputValues.brand} onChange={(e) => setInputValues({ ...inputValues, brand: e.target.value })}>
+      <select className='mt-4 mb-2 ml-10 w-[1025px] h-[60px] cursor-pointer hover:bg-slate-100 text-black border border-gray-300 rounded-xl px-3 py-2 focus:outline-none transition duration-300 ease-in-out'
+        value={inputValues.brand} onChange={(e) => setInputValues({ ...inputValues, brand: e.target.value })}>
         <option
           value=""
           disabled hidden
@@ -123,7 +124,7 @@ export default function ProductAddForm() {
         <InputTable category={selectedCategory} inputValues={inputValues} setInputValues={setInputValues} />
       </div>
       <button
-        className='bg-blue-600 hover:bg-blue-700 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl mb-4'
+        className='bg-blue-600 hover:bg-blue-700 mt-4 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl mb-4 transition duration-300 ease-in-out transform hover:scale-105'
         onClick={handleSubmit}
       >New Product +</button>
     </div>
