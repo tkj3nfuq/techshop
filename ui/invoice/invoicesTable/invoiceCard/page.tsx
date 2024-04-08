@@ -1,7 +1,6 @@
-import { order, user } from '@prisma/client';
+import { order, product, user } from '@prisma/client';
 import { useRouter } from 'next/navigation';
 import React from 'react'
-import Popup from 'reactjs-popup';
 
 interface InvoiceCardProps {
     invoice: Order,
@@ -14,9 +13,6 @@ interface Order extends Omit<order, 'user'> {
 
 export default function InvoiceCard({ invoice, index }: InvoiceCardProps) {
     const router = useRouter();
-
-    const [open, setOpen] = React.useState(false);
-    const [selectedUser, setSelectedUser] = React.useState<user>({} as user);
 
     let statusColor;
     let statusText;

@@ -19,12 +19,9 @@ export default function InvoicesTable() {
 
     return (
         <div className='flex flex-col bg-slate-50 h-full'>
-            <button
-                className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 mr-6 mt-4 mx-10 rounded-xl'
-            >New Invoices +</button>
             <ul className="mb-4 mx-10 mt-4">
                 <li className="flex bg-white py-2 px-4">
-                    <div className="flex-1 text-black font-semibold">Oder</div>
+                    <div className="flex-1 text-black font-semibold">Number</div>
                     <div className="flex-1 text-black font-semibold">Full Name</div>
                     <div className="flex-1 text-black font-semibold">Payment Method</div>
                     <div className="flex-1 text-black font-semibold">Total</div>

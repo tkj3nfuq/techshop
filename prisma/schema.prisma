@@ -7,6 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+type InventoryProductList {
+  product  String @db.ObjectId
+  quantity Int
+}
+
 type OrderProductList {
   product  String
   quantity String
@@ -37,11 +42,11 @@ model category {
   parentID    Json?
 }
 
-model invoice {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
-  createdAt String
-  status    String
-  userInfo  String
+model inventory {
+  id          String                 @id @default(auto()) @map("_id") @db.ObjectId
+  address     String
+  name        String
+  productList InventoryProductList[]
 }
 
 model order {
