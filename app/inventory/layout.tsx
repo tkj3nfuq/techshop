@@ -1,4 +1,4 @@
-import ProductNavBar from '@/ui/productNavBar/page'
+import TopBar from '@/ui/topBar/page'
 import SideBar from '@/ui/sidebar/page'
 import React from 'react'
 
@@ -9,7 +9,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
         <SideBar />
       </div>
       <div className="w-full flex flex-col bg-slate-50">
-        <ProductNavBar name='Inventories' />
+        <TopBar name='INVENTORIES' />
         {children}
       </div>
     </div>

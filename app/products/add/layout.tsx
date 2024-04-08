@@ -1,4 +1,4 @@
-import ProductNavBar from '@/ui/productNavBar/page'
+import ProductNavBar from '@/ui/topBar/page'
 import SideBar from '@/ui/sidebar/page'
 import React from 'react'
 

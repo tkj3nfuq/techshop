@@ -85,7 +85,7 @@ export default function ProductsTable() {
           ))}
         </select>
         <button
-          className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 mr-6 rounded-xl transition duration-300 ease-in-out transform hover:scale-105'
+          className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 mr-10 rounded-xl transition duration-300 ease-in-out transform hover:scale-105'
           onClick={() => router.push('/products/add')}>New Product +</button>
       </div>
       <div className='flex flex-row flex-wrap'>
