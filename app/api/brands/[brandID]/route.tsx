@@ -6,12 +6,12 @@ const prisma = new PrismaClient();
 export async function GET(req: Request) {
     const brandID = new URL(req.url).pathname.split("/").pop();
 
-    const brands = await prisma.brand.findMany({
+    const brands = await prisma.brand.findFirst({
         where: {
             id: brandID
         }
     });
-    return NextResponse.json(brands[0]);
+    return NextResponse.json(brands);
 }
 
 export async function PATCH(req: Response) {

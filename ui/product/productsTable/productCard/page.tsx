@@ -27,8 +27,7 @@ export default function ProductCard({ product, onDeleteClick, onEditClick, categ
     fetch(`/api/brands/` + product.brand)
       .then((res) => res.json())
       .then((data) => setBrand(data))
-  }, [])
-
+  }, [product])
 
   const handleDeleteClick = () => {
     onDeleteClick(product.id),
@@ -41,7 +40,9 @@ export default function ProductCard({ product, onDeleteClick, onEditClick, categ
 
   return (
     <div className='flex flex-col w-[190px] mt-5 shadow-md border-zinc-300 rounded-xl p-2 hover:bg-zinc-300 cursor-pointer bg-white transition duration-300 ease-in-out transform hover:scale-105'
-      onClick={() => { setOpen(true) }
+      onClick={() => { setOpen(true)
+        console.log(brand.id)
+       }
       }
     >
       <img className='mb-2 w-44 h-44 rounded-xl' src={product.image} alt={product.name}></img>

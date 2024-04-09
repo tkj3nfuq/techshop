@@ -5,7 +5,19 @@ import React from 'react'
 
 const prisma = new PrismaClient();
 
-export async function GET() {
+export async function GET(req: Request) {
+    const query = new URL(req.url).searchParams.get('id')?.split(',');
+
+    if (query) {
+        const products = await prisma.product.findMany({
+            where: {
+                id: {
+                    in: query
+                }
+            }
+        });
+        return NextResponse.json(products);
+    }
     const products = await prisma.product.findMany({
 
     });

@@ -1,5 +1,5 @@
 import React from 'react'
-import { order, user } from '@prisma/client';
+import { order, user, OrderProductList, product, voucher } from '@prisma/client';
 
 interface InvoiceDetailProps {
     invoiceID: string
@@ -8,6 +8,7 @@ interface InvoiceDetailProps {
 export default function InvoiceDetail({ invoiceID }: InvoiceDetailProps) {
 
     const [invoice, setInvoice] = React.useState<order>({} as order);
+    const [products, setProducts] = React.useState<product[]>([]);
 
     const currentDate = new Date().toLocaleDateString();
 
@@ -15,8 +16,17 @@ export default function InvoiceDetail({ invoiceID }: InvoiceDetailProps) {
         fetch('/api/invoices/' + invoiceID)
             .then((data) => data.json())
             .then((data) => setInvoice(data))
-        console.log(invoice)
-    }, [])
+        console.log(invoice.id)
+    }, [invoiceID])
+
+    React.useEffect(() => {
+        if (invoice.id) {
+            fetch('/api/products?id=' + invoice.productList?.map((product) => product.product).join(','), {
+            })
+                .then((data) => data.json())
+                .then((data) => setProducts(data))
+        }
+    }, [invoice])
 
     let statusColor;
     let statusText;
@@ -66,11 +76,11 @@ export default function InvoiceDetail({ invoiceID }: InvoiceDetailProps) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {invoice.productList?.map((product, index) => (
+                                {products?.map((product, index) => (
                                     <tr key={index} className='flex justify-between'>
-                                        <td className="text-gray-600 py-2 ml-6">{index+1}</td>
-                                        <td className="text-gray-600 py-2">{product.product}</td>
-                                        <td className="text-gray-600 py-2 mr-7">{product.quantity}</td>
+                                        <td className="text-gray-600 py-2 ml-6">{index + 1}</td>
+                                        <td className="text-gray-600 py-2">{product.name}</td>
+                                        <td className="text-gray-600 py-2">{invoice.productList?.find((productList) => productList.product === product.id)?.quantity}</td>
                                     </tr>
                                 ))}
                             </tbody>

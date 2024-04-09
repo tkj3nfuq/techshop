@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 
 export async function GET(req: Request) {
     const productID = new URL(req.url).pathname.split("/").pop();
-    
+
     const products = await prisma.product.findMany({
         where: {
             id: productID
