@@ -32,7 +32,7 @@ export default function User() {
     }
 
     return (
-        <div className='flex flex-col mx-10 mt-2 mb-8 rounded-xl shadow-md bg-white bg-slate-50 h-full'>
+        <div className='flex flex-col mx-10 mt-2 mb-8 rounded-xl shadow-md bg-white h-full'>
             <button
                 className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 mr-10 mt-4 mx-10 rounded-xl transition duration-300 ease-in-out transform hover:scale-105'
                 onClick={() => { route.push("users/add") }}

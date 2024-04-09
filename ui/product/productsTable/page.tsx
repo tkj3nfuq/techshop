@@ -55,10 +55,10 @@ export default function ProductsTable() {
     : products;
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col mx-10 pb-6 mt-2 rounded-xl shadow-md bg-white h-full'>
       <div className='flex flex-row justify-between mt-4'>
         <select
-          className='ml-6 cursor-pointer hover:bg-slate-100 text-black border border-gray-300 rounded-xl px-3 py-2 focus:outline-none transition duration-300 ease-in-out'
+          className='ml-10 cursor-pointer hover:bg-slate-100 text-black border border-gray-300 rounded-xl px-3 py-2 focus:outline-none transition duration-300 ease-in-out'
           value={selectedCategory ? selectedCategory.id : 'all'}
           onChange={handleCategoryChange}
           required
@@ -73,9 +73,9 @@ export default function ProductsTable() {
           className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 mr-10 rounded-xl transition duration-300 ease-in-out transform hover:scale-105'
           onClick={() => router.push('/products/add')}>New Product +</button>
       </div>
-      <div className='flex flex-row flex-wrap'>
+      <div className='flex flex-row flex-wrap mx-6 justify-between'>
         {filteredProducts.map((item) => (
-          <li className='flex flex-row flex-wrap ml-6'>
+          <li className='flex flex-row flex-wrap'>
             <ProductCard product={item} category={selectedCategory} />
           </li>
         ))}

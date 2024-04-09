@@ -28,15 +28,15 @@ export default function ProductCard({ product, category }: ProductCardProps) {
   }, [product])
 
   return (
-    <div className='flex flex-col w-[190px] mt-5 shadow-md border-zinc-300 rounded-xl p-2 hover:bg-zinc-300 cursor-pointer bg-white transition duration-300 ease-in-out transform hover:scale-105'
+    <div className='flex flex-col w-[218px] mt-5 shadow-md border-zinc-300 rounded-xl p-4 hover:bg-zinc-300 cursor-pointer bg-white transition duration-300 ease-in-out transform hover:scale-105'
       onClick={() => { 
         router.push(`/products/detail/${product.id}`)
        }
       }
     >
-      <img className='mb-2 w-44 h-44 rounded-xl' src={product.image} alt={product.name}></img>
+      <img className='mb-2 w-46 h-46 rounded-xl' src={product.image} alt={product.name}></img>
       <div className='flex flex-col'>
-        <div className='font-bold text-zinc-700 max-w-44 border-t-2 border-zinc-300 pt-1.5'>{product.name}</div>
+        <div className='font-bold text-zinc-700 max-w-44 w-full border-zinc-300 pt-1.5'>{product.name}</div>
         <div className='self-end text-zinc-700'>{product.price.toLocaleString()} đ</div>
       </div>
     </div>

@@ -39,9 +39,10 @@ export default function ProductDetail({ productID }: ProductDetailProps) {
     router.push(`/products/${productID}`)
   }
 
-  const handleDeleteCLick = () => {
-    fetch(`/api/products/` + productID, {
-      method: 'DELETE'
+  const handleDeleteCLick = (productID: string) => {
+    fetch(`/api/products`, {
+      method: 'DELETE',
+      body: JSON.stringify({ productID: productID })
     })
       .then((res) => res.json())
       .then((data) => {
@@ -60,7 +61,7 @@ export default function ProductDetail({ productID }: ProductDetailProps) {
           <div>
             <div className='font-bold text-3xl pb-3'>{product.name}</div>
             <div className='text font-bold'>Description:</div>
-            <div className='text-left'>The Lenovo ThinkPad X1 Carbon Gen 11 is a premium ultrabook laptop designed for professionals and business users. It's part of Lenovo's renowned ThinkPad X1 series known for its durability, sleek design, and high performance. The Gen 11 version continues this tradition with updated features and specifications.</div>
+            <div className='text-left'>{product.description}</div>
             <div className='text font-bold'>Brand:</div>
             <div className='text'>{brand.name}</div>
             <div className='text font-bold'>Category:</div>
@@ -87,7 +88,7 @@ export default function ProductDetail({ productID }: ProductDetailProps) {
       </div>
       <div className='flex flex-row justify-between'>
         <button className='bg-green-500 text-white py-2 px-4 ml-4 rounded hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105' onClick={handleEditClick}>Edit</button>
-        <button className='bg-red-500 text-white py-2 px-4 mr-4 rounded hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105' onClick={handleDeleteCLick}>Delete</button>
+        <button className='bg-red-500 text-white py-2 px-4 mr-4 rounded hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105' onClick={() => handleDeleteCLick(product.id)}>Delete</button>
       </div>
     </div>
   )
