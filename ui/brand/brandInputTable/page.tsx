@@ -22,7 +22,7 @@ export default function BrandInputTable() {
   }
 
   return (
-    <div className='flex flex-col mx-10 mt-4'>
+    <div className='flex flex-col bg-white mx-10 mt-2 mb-8 px-6 py-4 rounded-xl shadow-md'>
       <Input name="Brand's Name" value={brandInputValue.name || ""} onChange={(value) => setBrandInputValue({ ...brandInputValue, name: value })} />
       <Input name="Description" value={brandInputValue.description || ""} onChange={(value) => setBrandInputValue({ ...brandInputValue, description: value })} />
       <button

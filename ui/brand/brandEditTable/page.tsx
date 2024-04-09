@@ -33,11 +33,11 @@ export default function BrandEditTable({ brandID }: UserEditTableProps) {
     }
 
     return (
-        <div className='flex flex-col mx-10 mt-4'>
+        <div className='flex flex-col mx-10 mt-2 mb-8 px-6 py-4 rounded-xl shadow-md bg-white'>
             <Input name="Name" value={updatedBrand.name || ""} onChange={(value) => setUpdatedBrand({ ...updatedBrand, name: value })} />
             <Input name="Description" value={updatedBrand.description || ""} onChange={(value) => setUpdatedBrand({ ...updatedBrand, description: value })} />
             <button
-                className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 rounded-xl mb-4'
+                className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 rounded-xl mb-4 transition duration-300 ease-in-out transform hover:scale-105'
                 onClick={() => onEditSubmit(brandID, updatedBrand.name, updatedBrand.description)}>
                 Update Brand
             </button>

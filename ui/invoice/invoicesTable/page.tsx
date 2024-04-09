@@ -18,7 +18,7 @@ export default function InvoicesTable() {
     }, [])
 
     return (
-        <div className='flex flex-col bg-slate-50 h-full'>
+        <div className='flex flex-col mx-10 mt-2 mb-8 rounded-xl shadow-md bg-white h-full'>
             <ul className="mb-4 mx-10 mt-4">
                 <li className="flex bg-white py-2 px-4">
                     <div className="flex-1 text-black font-semibold">Number</div>

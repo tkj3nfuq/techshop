@@ -39,16 +39,16 @@ export default function UserInputTable() {
     }
 
     return (
-        <div className='flex flex-col mx-10 mt-4'>
+        <div className='flex flex-col bg-white mx-10 mt-2 mb-8 px-6 py-4 rounded-xl shadow-md'>
             <Input name="Name" value={userInputValue.fullname || ""} onChange={(value) => setUserInputValue({ ...userInputValue, fullname: value })} />
             <Input name="Email" value={userInputValue.email || ""} onChange={(value) => setUserInputValue({ ...userInputValue, email: value })} />
             <Input name="PhoneNumber" value={userInputValue.phoneNumber || ""} onChange={(value) => setUserInputValue({ ...userInputValue, phoneNumber: value })} />
-            <div className='flex flex-row items-center w-full max-w-screen-lg justify-between bg-gray-100 p-4 rounded-lg shadow-md my-2'>
-                <h1 className='text-black font-bold'>Date of Birth:</h1>
+            <div className='flex flex-row items-center w-full max-w-screen-lg justify-between bg-white p-4 rounded-lg shadow my-2'>
+                <h1 className='text-gray-500 font-bold'>Date of Birth:</h1>
                 <DatePicker
                     selected={userInputValue.dateOfBirth}
                     onChange={(date) => handleDateOfBirthChange(date)}
-                    className='ml-4 text-black px-3 py-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500'
+                    className='ml-4 text-black px-3 py-2 bg-white border border-gray-100 rounded-md focus:outline-none focus:border-blue-600'
                     placeholderText='Select Date'
                     dateFormat='dd/MM/yyyy'
                     calendarClassName='react-datepicker-calendar'

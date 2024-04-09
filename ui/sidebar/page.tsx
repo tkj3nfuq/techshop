@@ -4,16 +4,16 @@ import MenuLink from '../menuLink/page'
 export default function SideBar() {
     const menuItems = [
         {
-            title: "Dashboard",
-            path: "/dashboard"
-        },
-        {
             title: "Products",
             path: "/products"
         },
         {
             title: "Brands",
             path: "/brands"
+        },
+        {
+            title: "Users",
+            path: "/users"
         },
         {
             title: "Inventory",
@@ -24,12 +24,8 @@ export default function SideBar() {
             path: "/invoices"
         },
         {
-            title: "Users",
-            path: "/users"
-        },
-        {
-            title: "Reports",
-            path: "/reports"
+            title: "Settings",
+            path: "/settings"
         },
     ]
 

@@ -1,4 +1,5 @@
 import SideBar from '@/ui/sidebar/page'
+import TopBar from '@/ui/topBar/page'
 import React from 'react'
 
 export default function layout({children}: {children: React.ReactNode}) {
@@ -7,7 +8,8 @@ export default function layout({children}: {children: React.ReactNode}) {
         <div className='z-50 w-64 h-screen'>
             <SideBar />
         </div>
-        <div className="-ms-8 w-full flex flex-col">
+        <div className="w-full flex flex-col bg-slate-50">
+            <TopBar name='SETTINGS'/>
             {children}
         </div>
     </div>

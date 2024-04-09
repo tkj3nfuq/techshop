@@ -48,7 +48,7 @@ export default function UserEditTable({ userID }: UserEditTableProps) {
     }
 
     return (
-        <div className='flex flex-col mx-10 mt-4'>
+        <div className='flex flex-col mx-10 mt-2 mb-8 px-6 py-4 rounded-xl shadow-md bg-white'>
             <Input name="Name" value={updatedUser.fullname || ""} onChange={(value) => setUpdatedUser({ ...updatedUser, fullname: value })} />
             <Input name="Email" value={updatedUser.email || ""} onChange={(value) => setUpdatedUser({ ...updatedUser, email: value })} />
             <Input name="PhoneNumber" value={updatedUser.phoneNumber || ""} onChange={(value) => setUpdatedUser({ ...updatedUser, phoneNumber: value })} />

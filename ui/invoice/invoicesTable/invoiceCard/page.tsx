@@ -40,7 +40,7 @@ export default function InvoiceCard({ invoice, index }: InvoiceCardProps) {
     }
 
     return (
-        <div className='flex flex-row bg-white hover:bg-zinc-300 cursor-pointer shadow-md rounded-lg p-4 mb-4 transition duration-300 ease-in-out'
+        <div className='flex flex-row bg-white hover:bg-zinc-300 cursor-pointer shadow rounded-lg p-4 mb-4 transition duration-300 ease-in-out'
             onClick={handleInvoiceCardClick}
         >
             <div className='flex-1 text-gray-600 mr-4'>{index}</div>
