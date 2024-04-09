@@ -13,17 +13,6 @@ export default function UserInputTable() {
     const [userInputValue, setUserInputValue] = React.useState<user>(
         { dateOfBirth: new Date(), address: [{ name: "", value: "" }] } as user);
 
-    const formatDate = (dateString: string) => {
-        const date = new Date(dateString);
-
-        date.setDate(date.getDate() - 1);
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const year = date.getFullYear();
-
-        return `${day}/${month}/${year}`;
-    };
-
     const handleAddressChange = (index: number, name: string, value: string) => {
         const updatedAddress = [...userInputValue.address];
         updatedAddress[index] = { name, value };

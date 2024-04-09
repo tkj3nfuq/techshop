@@ -63,21 +63,18 @@ export default function ProductAddForm() {
 
   return (
     <div className='flex flex-col w-full'>
-      <div className='flex flex-row justify-between'>
-        <div className='mt-2 ml-4 text-black text-xl font-bold'>Adding New Product</div>
-        <select
-          className='mt-4 cursor-pointer mr-4 hover:bg-slate-100 text-black border border-gray-300 rounded-xl px-3 py-2 focus:outline-none transition duration-300 ease-in-out'
-          value={selectedCategory ? selectedCategory.id : 'all'}
-          onChange={handleCategoryChange}
-          required
-        >
-          <option value="" disabled hidden>Select your option</option>
-          <option value='all' className='text-black'>All Categories</option>
-          {categories.map((category) => (
-            <option key={category.id} value={category.id} className='text-black'>{category.name}</option>
-          ))}
-        </select>
-      </div>
+      <select
+        className='mt-4 mb-4 self-end cursor-pointer mr-4 hover:bg-slate-100 text-black border border-gray-300 rounded-xl px-3 py-2 focus:outline-none transition duration-300 ease-in-out'
+        value={selectedCategory ? selectedCategory.id : 'all'}
+        onChange={handleCategoryChange}
+        required
+      >
+        <option value="" disabled hidden>Select your option</option>
+        <option value='all' className='text-black'>All Categories</option>
+        {categories.map((category) => (
+          <option key={category.id} value={category.id} className='text-black'>{category.name}</option>
+        ))}
+      </select>
       <CldUploadWidget
         uploadPreset='plmii4sz'
         options={{

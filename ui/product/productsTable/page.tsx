@@ -50,21 +50,6 @@ export default function ProductsTable() {
     }
   }
 
-  const handleDeleteClick = (productID: string) => {
-    fetch("api/products", {
-      method: "DELETE",
-      body: JSON.stringify({ productID: productID })
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(products.filter(product => product.id !== productID));
-      })
-  }
-
-  const handleEditClick = (selectedProduct: product) => {
-    router.push("/products/" + selectedProduct.id)
-  };
-
   const filteredProducts = selectedCategory
     ? products.filter((item) => item.category === selectedCategory.id)
     : products;
@@ -91,7 +76,7 @@ export default function ProductsTable() {
       <div className='flex flex-row flex-wrap'>
         {filteredProducts.map((item) => (
           <li className='flex flex-row flex-wrap ml-6'>
-            <ProductCard product={item} category={selectedCategory} onDeleteClick={handleDeleteClick} onEditClick={handleEditClick} />
+            <ProductCard product={item} category={selectedCategory} />
           </li>
         ))}
       </div>

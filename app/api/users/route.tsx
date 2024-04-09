@@ -5,6 +5,19 @@ import { NextResponse } from 'next/server';
 const prisma = new PrismaClient();
 
 export async function GET(req: Request) {
+    const query = new URL(req.url).searchParams.get('id')?.split(',');
+
+    if (query) {
+        const users = await prisma.user.findMany({
+            where: {
+                id: {
+                    in: query
+                }
+            }
+        });
+        return NextResponse.json(users);
+    }
+
     const users = await prisma.user.findMany({
 
     });
