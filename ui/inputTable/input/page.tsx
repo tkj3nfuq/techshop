@@ -13,10 +13,10 @@ export default function Input({ name, value, onChange }: InputProps) {
   };
 
   return (
-    <div className='flex flex-row items-center w-full max-w-screen-lg justify-between bg-white p-4 rounded-lg shadow my-2'>
+    <div className='flex flex-row items-center w-full max-w-screen-lg justify-between bg-white p-4'>
       <h1 className='text-gray-500 font-bold'>{name}:</h1>
       <input
-        className='ml-4 px-3 py-2 bg-white w-full max-w-screen-md border border-gray-100 rounded-md focus:outline-none focus:border-blue-600 transition duration-300 ease-in-out hover:border-gray-300'
+        className='ml-4 px-3 py-2 bg-white w-full max-w-screen-md border-b-2 focus:outline-none focus:border-blue-500 transition duration-300 ease-in-out hover:border-gray-300'
         type='text'
         placeholder='Enter your text...'  
         value={value}

@@ -11,12 +11,14 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
-    const { name, description } = await req.json()
+    const { name, description, email, phoneNumber } = await req.json()
 
     const newBrand = await prisma.brand.create({
         data: {
             name,
-            description
+            description,
+            email,
+            phoneNumber
         }
     })
     return NextResponse.json(newBrand)

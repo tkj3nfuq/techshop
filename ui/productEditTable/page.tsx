@@ -2,6 +2,7 @@ import { product } from '@prisma/client';
 import React from 'react'
 import Input from '../inputTable/input/page';
 import { useRouter } from 'next/navigation';
+import MultilineInput from '../inputTable/multilineInput/page';
 
 interface EditProductFormProps {
     productID: string;
@@ -32,14 +33,14 @@ export default function EditTable({ productID }: EditProductFormProps) {
     };
 
     return (
-        <div className='flex flex-col mx-10 mt-4'>
+        <div className='flex flex-col bg-white mx-10 mt-2 mb-8 px-6 py-2 rounded-xl shadow-md'>
             <div className=''>
                 <Input name="Name" value={updatedProduct.name || ""} onChange={(value) => setUpdatedProduct({ ...updatedProduct, name: value })} />
-                <Input name="Description" value={updatedProduct.description || ""} onChange={(value) => setUpdatedProduct({ ...updatedProduct, description: value })} />
                 {updatedProduct.properties?.map((prop, index) => (
                     <Input key={index} name={prop.name} value={updatedProduct.properties?.find((p) => p.name === prop.name)?.value || ""} onChange={(value) => handleOnChange(prop.name, value)} />
                 ))}
                 <Input name="Price" value={updatedProduct.price?.toString() || ""} onChange={(value) => setUpdatedProduct({ ...updatedProduct, price: Number(value) })} />
+                <MultilineInput name="Description" value={updatedProduct.description || ""} onChange={(value) => setUpdatedProduct({ ...updatedProduct, description: value })} />
             </div>
             <button
                 className='bg-blue-600 self-end font-bold text-md px-4 py-2 rounded-xl mb-4 transition duration-300 ease-in-out transform hover:scale-105'

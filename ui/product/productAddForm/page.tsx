@@ -62,7 +62,7 @@ export default function ProductAddForm() {
   }
 
   return (
-    <div className='flex flex-col w-full'>
+    <div className='flex flex-col bg-white mx-10 mt-2 mb-8 px-6 py-4 rounded-xl shadow-md'>
       <select
         className='mt-4 mb-4 self-end cursor-pointer mr-4 hover:bg-slate-100 text-black border border-gray-300 rounded-xl px-3 py-2 focus:outline-none transition duration-300 ease-in-out'
         value={selectedCategory ? selectedCategory.id : 'all'}

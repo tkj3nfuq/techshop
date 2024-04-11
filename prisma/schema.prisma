@@ -30,7 +30,9 @@ type UserAddress {
 model brand {
   id          String @id @default(auto()) @map("_id") @db.ObjectId
   description String
+  email       String
   name        String
+  phoneNumber String
 }
 
 model category {

@@ -1,6 +1,7 @@
 'use client'
 
 import Input from '@/ui/inputTable/input/page'
+import MultilineInput from '@/ui/inputTable/multilineInput/page'
 import { brand } from '@prisma/client'
 import { useRouter } from 'next/navigation'
 import React from 'react'
@@ -8,7 +9,12 @@ import React from 'react'
 export default function BrandInputTable() {
   const router = useRouter();
 
-  const [brandInputValue, setBrandInputValue] = React.useState<brand>({} as brand)
+  const [brandInputValue, setBrandInputValue] = React.useState<brand>({
+    name: '',
+    email: '',
+    phoneNumber: '',
+    description: ''
+  } as brand)
 
   const handleSubmit = () => {
     fetch('/api/brands', {
@@ -24,9 +30,11 @@ export default function BrandInputTable() {
   return (
     <div className='flex flex-col bg-white mx-10 mt-2 mb-8 px-6 py-4 rounded-xl shadow-md'>
       <Input name="Brand's Name" value={brandInputValue.name || ""} onChange={(value) => setBrandInputValue({ ...brandInputValue, name: value })} />
-      <Input name="Description" value={brandInputValue.description || ""} onChange={(value) => setBrandInputValue({ ...brandInputValue, description: value })} />
+      <Input name="Email" value={brandInputValue.email || ""} onChange={(value) => setBrandInputValue({ ...brandInputValue, email: value })} />
+      <Input name="Phone Number" value={brandInputValue.phoneNumber || ""} onChange={(value) => setBrandInputValue({ ...brandInputValue, phoneNumber: value })} />
+      <MultilineInput name="Description" value={brandInputValue.description || ""} onChange={(value) => setBrandInputValue({ ...brandInputValue, description: value })} />
       <button
-        className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 rounded-xl mb-4'
+        className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 rounded-xl transition duration-300 ease-in-out transform hover:scale-105'
         onClick={handleSubmit}
       >New Brand +</button>
     </div>

@@ -28,8 +28,8 @@ export default function BrandCard({ brand, index, onDeleteClick, onEditClick }: 
             onClick={() => { setOpen(true) }}>
             <div className='flex-1 text-gray-600 mr-4'>{index}</div>
             <div className='flex-1 text-gray-600 mr-4'>{brand.name}</div>
-            <div className='flex-1 text-gray-600 mr-4'>sample@gm.com</div>
-            <div className='flex-1 text-gray-600'>0888888888</div>
+            <div className='flex-1 text-gray-600 mr-4'>{brand.email}</div>
+            <div className='flex-1 text-gray-600'>{brand.phoneNumber}</div>
             <Popup
                 open={open}
                 onClose={() => setOpen(false)}
@@ -54,6 +54,14 @@ export default function BrandCard({ brand, index, onDeleteClick, onEditClick }: 
                                 <tr className='border-b border-gray-300'>
                                     <td className='py-2 px-4 font-bold'>Description: </td>
                                     <td className='py-2 px-4'>{brand.description}</td>
+                                </tr>
+                                <tr className='border-b border-gray-300'>
+                                    <td className='py-2 px-4 font-bold'>Email: </td>
+                                    <td className='py-2 px-4'>{brand.email}</td>
+                                </tr>
+                                <tr className='border-b border-gray-300'>
+                                    <td className='py-2 px-4 font-bold'>Phone Number: </td>
+                                    <td className='py-2 px-4'>{brand.phoneNumber}</td>
                                 </tr>
                             </tbody>
                         </table>

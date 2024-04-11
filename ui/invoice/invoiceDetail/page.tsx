@@ -82,7 +82,7 @@ export default function InvoiceDetail({ invoiceID }: InvoiceDetailProps) {
     }
 
     return (
-        <div className='flex flex-col h-full'>
+        <div className='flex flex-col'>
             <div className="max-w-4xl mx-auto px-4 py-8">
                 <h1 className="text-2xl text-gray-600 font-semibold mb-4">Invoice Detail</h1>
                 <div className="bg-white w-[600px] shadow-md rounded-lg overflow-hidden">

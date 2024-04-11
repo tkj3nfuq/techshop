@@ -40,14 +40,16 @@ export default function ProductDetail({ productID }: ProductDetailProps) {
   }
 
   const handleDeleteCLick = (productID: string) => {
-    fetch(`/api/products`, {
-      method: 'DELETE',
-      body: JSON.stringify({ productID: productID })
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        router.push('/products')
+    if (window.confirm('Are you sure you want to delete this product?')) {
+      fetch(`/api/products`, {
+        method: 'DELETE',
+        body: JSON.stringify({ productID: productID })
       })
+        .then((res) => res.json())
+        .then((data) => {
+          router.push('/products')
+        })
+    }
   }
 
 

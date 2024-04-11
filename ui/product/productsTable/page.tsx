@@ -55,7 +55,7 @@ export default function ProductsTable() {
     : products;
 
   return (
-    <div className='flex flex-col mx-10 pb-6 mt-2 rounded-xl shadow-md bg-white h-full'>
+    <div className='flex flex-col mx-10 mt-2 mb-4 pb-8 rounded-xl shadow-md bg-white'>
       <div className='flex flex-row justify-between mt-4'>
         <select
           className='ml-10 cursor-pointer hover:bg-slate-100 text-black border border-gray-300 rounded-xl px-3 py-2 focus:outline-none transition duration-300 ease-in-out'

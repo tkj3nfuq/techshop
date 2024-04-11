@@ -43,12 +43,12 @@ export default function UserInputTable() {
             <Input name="Name" value={userInputValue.fullname || ""} onChange={(value) => setUserInputValue({ ...userInputValue, fullname: value })} />
             <Input name="Email" value={userInputValue.email || ""} onChange={(value) => setUserInputValue({ ...userInputValue, email: value })} />
             <Input name="PhoneNumber" value={userInputValue.phoneNumber || ""} onChange={(value) => setUserInputValue({ ...userInputValue, phoneNumber: value })} />
-            <div className='flex flex-row items-center w-full max-w-screen-lg justify-between bg-white p-4 rounded-lg shadow my-2'>
+            <div className='flex flex-row items-center w-full max-w-screen-lg justify-between bg-white p-4'>
                 <h1 className='text-gray-500 font-bold'>Date of Birth:</h1>
                 <DatePicker
                     selected={userInputValue.dateOfBirth}
                     onChange={(date) => handleDateOfBirthChange(date)}
-                    className='ml-4 text-black px-3 py-2 bg-white border border-gray-100 rounded-md focus:outline-none focus:border-blue-600'
+                    className='ml-4 text-black px-3 py-2 bg-white border-b-2 focus:border-blue-500 hover:border-gray-300'
                     placeholderText='Select Date'
                     dateFormat='dd/MM/yyyy'
                     calendarClassName='react-datepicker-calendar'
@@ -68,7 +68,7 @@ export default function UserInputTable() {
                 />
             ))}
             <button
-                className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 rounded-xl mb-4 transition duration-300 ease-in-out transform hover:scale-105'
+                className='bg-blue-600 hover:bg-blue-700 self-end font-bold text-md px-4 py-2 rounded-xl transition duration-300 ease-in-out transform hover:scale-105'
                 onClick={handleSubmit}
             >New User +</button>
         </div>

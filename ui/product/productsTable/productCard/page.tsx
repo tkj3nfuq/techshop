@@ -28,7 +28,7 @@ export default function ProductCard({ product, category }: ProductCardProps) {
   }, [product])
 
   return (
-    <div className='flex flex-col w-[218px] mt-5 shadow-md border-zinc-300 rounded-xl p-4 hover:bg-zinc-300 cursor-pointer bg-white transition duration-300 ease-in-out transform hover:scale-105'
+    <div className='flex flex-col w-[210px] mt-5 shadow-md border-zinc-300 rounded-xl p-4 hover:bg-zinc-300 cursor-pointer bg-white transition duration-300 ease-in-out transform hover:scale-105'
       onClick={() => { 
         router.push(`/products/detail/${product.id}`)
        }

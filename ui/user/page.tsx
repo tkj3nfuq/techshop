@@ -17,14 +17,16 @@ export default function User() {
     }, []);
 
     const onDeleteClick = (userID: string) => {
-        fetch('api/users', {
-            method: "DELETE",
-            body: JSON.stringify({ userID: userID })
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setUsers(users.filter(user => user.id !== userID))
+        if (window.confirm('Are you sure you want to delete this user?')) {
+            fetch('api/users', {
+                method: "DELETE",
+                body: JSON.stringify({ userID: userID })
             })
+                .then((res) => res.json())
+                .then((data) => {
+                    setUsers(users.filter(user => user.id !== userID))
+                })
+        }
     }
 
     const onEditClick = (selectedUser: user) => {

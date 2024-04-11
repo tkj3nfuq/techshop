@@ -30,18 +30,18 @@ export default function SideBar() {
     ]
 
     return (
-        <div className=''>
-            <div className="flex items-center">
-                <h1 className='font-extrabold text-white text-3xl mx-auto pt-2 mb-2 mt-2'>TechShop</h1>
+            <div className='fixed w-64 h-full bg-black'>
+                <div className="flex items-center w-full">
+                    <h1 className='font-extrabold text-white text-3xl mx-auto pt-2 mb-2 mt-2'>TechShop</h1>
+                </div>
+                <ul>
+                    {menuItems.map((item) => (
+                        <li key={item.title}>
+                            <MenuLink title={item.title} path={item.path} />
+                        </li>
+                    ))}
+                </ul>
             </div>
-            <ul>
-                {menuItems.map((item) => (
-                    <li key={item.title}>
-                        <MenuLink title={item.title} path={item.path} />
-                    </li>
-                ))}
-            </ul>
-        </div>
     )
 }
 
