@@ -18,7 +18,6 @@ interface ProductCardProps {
 export default function ProductCard({ product, category }: ProductCardProps) {
   const router = useRouter();
 
-  const [open, setOpen] = React.useState(false);
   const [brand, setBrand] = React.useState<brand>({} as brand);
 
   React.useEffect(() => {

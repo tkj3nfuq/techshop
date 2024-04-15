@@ -1,4 +1,3 @@
-import React from 'react'
 import { PrismaClient, user } from '@prisma/client'
 import { NextResponse } from 'next/server';
 

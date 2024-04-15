@@ -13,3 +13,27 @@ export async function GET(req: Request) {
     });
     return NextResponse.json(inventory);
 }
+
+export async function PUT(req: Request) {
+    const inventoryID = new URL(req.url).pathname.split("/").pop();
+    const { product, quantity } = await req.json();
+
+    if (!inventoryID) {
+        throw new Error('Inventory ID is missing in the request body.');
+    }
+
+    const updatedInventory = await prisma.inventory.update({
+        where: {
+            id: inventoryID
+        },
+        data: {
+            productList: {
+                push: {
+                    product: product,
+                    quantity: quantity
+                }
+            }
+        }
+    });
+    return NextResponse.json(updatedInventory);
+}

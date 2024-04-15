@@ -58,10 +58,10 @@ export default function TopBar({ name }: ProductNavBarProps) {
         </div>
         {isDropdownOpen && (
           <div className='absolute top-12 right-0 bg-white shadow-md rounded-md p-2 z-50'>
-            <button onClick={handleProfile} className='block w-full text-black text-left py-2 px-4 hover:bg-gray-100 duration-300 ease-in-out transform hover:scale-105'>
+            <button onClick={handleProfile} className='block w-full rounded text-black text-left mb-2 py-2 px-4 hover:bg-blue-600 hover:text-white duration-300 ease-in-out transform hover:scale-105'>
               Profile
             </button>
-            <button onClick={handleLogout} className='block w-full text-black text-left py-2 px-4 hover:bg-gray-100 duration-300 ease-in-out transform hover:scale-105'>
+            <button onClick={handleLogout} className='block w-full rounded text-black text-left py-2 px-4 hover:bg-red-500 hover:text-white duration-300 ease-in-out transform hover:scale-105'>
               Logout
             </button>
           </div>
