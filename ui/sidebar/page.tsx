@@ -16,6 +16,10 @@ export default function SideBar() {
             path: "/users"
         },
         {
+            title: "Vouchers",
+            path: "/vouchers"
+        },
+        {
             title: "Inventory",
             path: "/inventory"
         },

@@ -18,7 +18,6 @@ export default function ProductAddForm() {
   const [categories, setCategories] = React.useState<Category[]>([]);
   const [inputValues, setInputValues] = React.useState<product>({ brand: "" } as product);
   const [brands, setBrands] = React.useState<brand[]>([]);
-  const [selectedBrand, setSelectedBrand] = React.useState<brand | null>(null);
   const [image, setImage] = React.useState("");
   const [selectedCategory, setSelectedCategory] = React.useState<Category | null>(null);
 
@@ -53,7 +52,7 @@ export default function ProductAddForm() {
   const handleSubmit = () => {
     fetch("/api/products", {
       method: "POST",
-      body: JSON.stringify({ ...inputValues, image: image } as product)
+      body: JSON.stringify({ ...inputValues, previewImage: image, images: {} } as product)
     })
       .then((res) => res.json())
       .then((data) => {

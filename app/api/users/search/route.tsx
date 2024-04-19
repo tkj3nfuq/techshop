@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 export async function GET(req: Request) {
     const name = new URL(req.url).searchParams.get('name') as string;
@@ -10,14 +10,14 @@ export async function GET(req: Request) {
         return NextResponse.json([]);
     }
     else {
-        const products = await prisma.product.findMany({
+        const users = await prisma.user.findMany({
             where: {
-                name: {
+                fullname: {
                     contains: name,
                     mode: 'insensitive'
                 }
             }
         })
-        return NextResponse.json(products);
+        return NextResponse.json(users);
     }
 }

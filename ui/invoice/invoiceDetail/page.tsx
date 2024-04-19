@@ -94,7 +94,7 @@ export default function InvoiceDetail({ invoiceID }: InvoiceDetailProps) {
                     <div className="px-4 py-2">
                         <div className="mb-4">
                             <p className="text-gray-600 mb-2 flex justify-between">Invoice ID: <span>{invoice.id}</span></p>
-                            <p className="text-gray-600 mb-2 flex justify-between">Payment Method: <span>{invoice.paymentMethod}</span></p>
+                            <p className="text-gray-600 mb-2 flex justify-between">Payment Method: <span>{invoice.shippingMethod}</span></p>
                             <p className="text-gray-600 mb-2 flex justify-between">Status: <span className={statusColor}>{statusText}</span></p>
                             <p className="text-gray-600 mb-2 flex justify-between">Voucher: <span>{voucher.code}</span></p>
                             <p className="text-gray-600 flex justify-between">Customer: <span>{user.fullname}</span></p>

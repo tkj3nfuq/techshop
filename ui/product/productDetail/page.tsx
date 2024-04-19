@@ -57,7 +57,7 @@ export default function ProductDetail({ productID }: ProductDetailProps) {
     <div className='flex flex-col px-6 py-6 bg-white rounded-xl mx-10 mt-2 mb-8 shadow-md'>
       <div className='flex flex-row justify-between'>
         <div>
-          <img className='w-[480px] h-[480px] rounded-xl ml-4' src={product.image} alt={product.name}></img>
+          <img className='w-[480px] h-[480px] rounded-xl ml-4' src={product.previewImage} alt={product.name}></img>
         </div>
         <div className='text-black w-[600px] h-[520px] mr-4 flex justify-between flex-col'>
           <div>

@@ -4,21 +4,38 @@ import { NextResponse } from "next/server";
 const prisma = new PrismaClient();
 
 export async function GET(req: Request) {
-    const query = new URL(req.url).searchParams.get('id')?.split(',');
-
-    if (query) {
-        const vouchers = await prisma.voucher.findMany({
-            where: {
-                id: {
-                    in: query
-                }
-            }
-        });
-        return NextResponse.json(vouchers);
-    }
 
     const vouchers = await prisma.voucher.findMany({
 
     });
     return NextResponse.json(vouchers);
+}
+
+export async function POST(req: Request) {
+    const {
+        code,
+        type,
+        description,
+        value,
+        maxValueInFinalPrice,
+        applyAllUser,
+        applyAllItem,
+        products,
+        users
+    } = await req.json();
+
+    const voucher = await prisma.voucher.create({
+        data: {
+            code,
+            type,
+            description,
+            value,
+            maxValueInFinalPrice,
+            applyAllUser,
+            applyAllItem,
+            itemsApply: products,
+            userApply: users
+        }
+    });
+    return NextResponse.json(voucher);
 }

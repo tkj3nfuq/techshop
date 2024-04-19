@@ -33,7 +33,7 @@ export default function ProductCard({ product, category }: ProductCardProps) {
        }
       }
     >
-      <img className='mb-2 w-46 h-46 rounded-xl' src={product.image} alt={product.name}></img>
+      <img className='mb-2 w-46 h-46 rounded-xl' src={product.previewImage} alt={product.name}></img>
       <div className='flex flex-col'>
         <div className='font-bold text-zinc-700 max-w-44 w-full border-zinc-300 pt-1.5'>{product.name}</div>
         <div className='self-end text-zinc-700'>{product.price.toLocaleString()} đ</div>

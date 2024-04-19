@@ -14,7 +14,7 @@ type InventoryProductList {
 
 type OrderProductList {
   product  String
-  quantity String
+  quantity Float
 }
 
 type ProductProperties {
@@ -40,8 +40,6 @@ model category {
   description String
   mainProps   String[]
   name        String
-  /// Could not determine type: the field only had null or empty values in the sample set.
-  parentID    Json?
 }
 
 model inventory {
@@ -52,25 +50,28 @@ model inventory {
 }
 
 model order {
-  id            String             @id @default(auto()) @map("_id") @db.ObjectId
-  paymentMethod String
-  productList   OrderProductList[]
-  status        String
-  subTotal      Int
-  total         Int
-  user_id       String
-  voucher       String
+  id              String             @id @default(auto()) @map("_id") @db.ObjectId
+  date            DateTime           @db.Date
+  productList     OrderProductList[]
+  shippingAddress String
+  shippingMethod  String
+  status          String
+  subTotal        Int
+  total           Int
+  user_id         String             @db.ObjectId
+  voucher         String
 }
 
 model product {
-  id          String              @id @default(auto()) @map("_id") @db.ObjectId
-  brand       String              @db.ObjectId
-  category    String              @db.ObjectId
-  description String
-  image       String
-  name        String
-  price       Int
-  properties  ProductProperties[]
+  id           String              @id @default(auto()) @map("_id") @db.ObjectId
+  brand        String              @db.ObjectId
+  category     String              @db.ObjectId
+  description  String
+  images       String[]
+  name         String
+  previewImage String
+  price        Int
+  properties   ProductProperties[]
 }
 
 model review {
@@ -94,9 +95,14 @@ model user {
 }
 
 model voucher {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
-  code        String
-  condition   String
-  description String
-  quantity    Int
+  id                   String   @id @default(auto()) @map("_id") @db.ObjectId
+  applyAllItem         Boolean
+  applyAllUser         Boolean
+  code                 String
+  description          String
+  itemsApply           String[]
+  maxValueInFinalPrice Float
+  type                 String
+  userApply            String[]
+  value                Float
 }
