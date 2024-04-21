@@ -6,12 +6,12 @@ const prisma = new PrismaClient();
 export async function GET(req: Request) {
     const productID = new URL(req.url).pathname.split("/").pop();
 
-    const products = await prisma.product.findMany({
+    const product = await prisma.product.findFirst({
         where: {
             id: productID
         }
     });
-    return NextResponse.json(products[0]);
+    return NextResponse.json(product);
 }
 
 
@@ -33,7 +33,7 @@ export async function PATCH(req: Request) {
             category,
             description,
             price,
-            image,
+            previewImage: image,
             properties: properties
         },
     });

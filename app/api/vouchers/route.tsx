@@ -39,3 +39,14 @@ export async function POST(req: Request) {
     });
     return NextResponse.json(voucher);
 }
+
+export async function DELETE(req: Request) {
+    const { voucherID } = await req.json();
+    
+    const voucher = await prisma.voucher.delete({
+        where: {
+            id: voucherID
+        }
+    });
+    return NextResponse.json(voucher);
+}

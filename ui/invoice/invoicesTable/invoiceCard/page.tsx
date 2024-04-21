@@ -45,7 +45,7 @@ export default function InvoiceCard({ invoice, index }: InvoiceCardProps) {
         >
             <div className='flex-1 text-gray-600 mr-4'>{index}</div>
             <div className='flex-1 text-gray-600 mr-4'>{invoice.user.fullname}</div>
-            <div className='flex-1 text-gray-600 mr-4'>{invoice.paymentMethod}</div>
+            <div className='flex-1 text-gray-600 mr-4'>{invoice.shippingMethod}</div>
             <div className='flex-1 text-gray-600 mr-4'>{invoice.total.toLocaleString()} đ</div>
             <div className={`flex-1 ${statusColor} mr-4`}>{statusText}</div>
         </div>
