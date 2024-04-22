@@ -31,6 +31,7 @@ model brand {
   id          String @id @default(auto()) @map("_id") @db.ObjectId
   description String
   email       String
+  image       String
   name        String
   phoneNumber String
 }
@@ -38,6 +39,7 @@ model brand {
 model category {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   description String
+  image       String
   mainProps   String[]
   name        String
 }

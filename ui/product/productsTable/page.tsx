@@ -71,10 +71,11 @@ export default function ProductsTable() {
           onChange={handleCategoryChange}
           required
         >
-          <option value="" disabled selected hidden>Select your option</option>
           <option value='all' className='text-black'>All Categories</option>
           {categories.map((category) => (
-            <option key={category.id} value={category.id} className='text-black'>{category.name}</option>
+            <option key={category.id} value={category.id} className='text-black flex flex-row'>
+              <span>{category.name}</span>
+            </option>
           ))}
         </select>
         <div className='flex flex-row items-center w-full max-w-screen-lg justify-center bg-white'>

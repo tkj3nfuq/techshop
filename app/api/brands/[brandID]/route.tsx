@@ -17,7 +17,7 @@ export async function GET(req: Request) {
 export async function PATCH(req: Response) {
     const brandID = new URL(req.url).pathname.split("/").pop();
 
-    const { name, description } = await req.json();
+    const { name, description, email, phoneNumber } = await req.json();
 
     if (!brandID) {
         throw new Error('Brand ID is missing in the request body.');
@@ -29,7 +29,9 @@ export async function PATCH(req: Response) {
         },
         data: {
             name,
-            description
+            description,
+            email,
+            phoneNumber,
         }
     });
     return NextResponse.json(updatedBrand)

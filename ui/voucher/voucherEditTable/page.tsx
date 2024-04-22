@@ -4,10 +4,6 @@ import Input from '@/ui/inputTable/input/page';
 import { product, user, voucher } from '@prisma/client';
 import _, { update } from 'lodash';
 import React from 'react'
-import VoucherProductCard from '../voucherInputTable/voucherProductCard/page';
-import VoucherUserCard from '../voucherInputTable/voucherUserCard/page';
-import VoucherSelectedProductCard from '../voucherInputTable/voucherSelectedProductCard/page';
-import VoucherSelectedUserCard from '../voucherInputTable/voucherSelectedUserCard/page';
 import VoucherEditSelectedProductCard from './voucherEditSelectedProductCard/page';
 import VoucherEditSelectedUserCard from './voucherEditSelectedUserCard/page';
 import VoucherEditProductCard from './voucherEditProductCard/page';

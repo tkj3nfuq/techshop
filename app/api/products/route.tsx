@@ -19,18 +19,6 @@ export async function GET(req: Request) {
         return NextResponse.json(products);
     }
 
-    const ProductIDs = await req.json();
-    if (ProductIDs) {
-        const products = await prisma.product.findMany({
-            where: {
-                id: {
-                    in: ProductIDs
-                }
-            }
-        });
-        return NextResponse.json(products);
-    }
-
     const products = await prisma.product.findMany({
 
     });

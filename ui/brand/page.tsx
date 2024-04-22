@@ -42,8 +42,9 @@ export default function BrandPage() {
                 onClick={() => { router.push('/brands/add') }}
             >New Brand +</button>
             <ul className="mb-4 mx-10 mt-4">
-                <li className="flex bg-white py-2 px-4">
+                <li className="flex justify-between bg-white py-2 px-4">
                     <div className="flex-1 text-black font-semibold">Number</div>
+                    <div className="flex-1 text-black font-semibold">Logo</div>
                     <div className="flex-1 text-black font-semibold">Brand's Name</div>
                     <div className="flex-1 text-black font-semibold">Email</div>
                     <div className="flex-1 text-black font-semibold">Phone Number</div>
