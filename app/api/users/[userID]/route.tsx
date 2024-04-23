@@ -14,7 +14,7 @@ export async function GET(req: Request) {
     return NextResponse.json(users[0]);
 }
 
-export async function PATCH(req: Response) {
+export async function PATCH(req: Request) {
     const userID = new URL(req.url).pathname.split("/").pop();
 
     const { address, dateOfBirth, email, fullname, password, phoneNumber, role, username } = await req.json();
