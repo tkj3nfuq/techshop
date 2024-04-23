@@ -1,10 +1,9 @@
 import React from 'react'
 
 interface SettingCardProps {
-    setting: string
 }
 
-export default function SettingCard({ setting }: SettingCardProps) {
+export default function SettingCard() {
     return (
         <div className='flex flex-row justify-between mx-10 bg-white hover:bg-zinc-300 cursor-pointer border-b-2 p-4 mb-4 transition duration-300 ease-in-out'>
             <div>
