@@ -14,7 +14,7 @@ export async function GET(req: Request) {
     return NextResponse.json(brands);
 }
 
-export async function PATCH(req: Response) {
+export async function PATCH(req: Request) {
     const brandID = new URL(req.url).pathname.split("/").pop();
 
     const { name, description, email, phoneNumber, image } = await req.json();
